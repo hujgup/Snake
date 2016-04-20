@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:complexType name="score-list">
+		<xs:sequence>
+			<xs:element name="score" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:nonNegativeInteger">
+							<xs:attribute name="player" type="xs:string" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="highscores">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="easy" type="score-list" />
+				<xs:element name="medium" type="score-list" />
+				<xs:element name="hard" type="score-list" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
