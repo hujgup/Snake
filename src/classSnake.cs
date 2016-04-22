@@ -22,6 +22,22 @@ namespace SnakeGame
 		/// <param name="tailDirection">The direction that the snake's initial motion should be towards.</param>
 		public Snake(Grid playArea, Grid.Cell startingCell, int initialLength, Direction initialDirection)
 		{
+			if (playArea == null)
+			{
+				throw new ArgumentNullException("playArea", "playArea cannot be null.");
+			}
+			if (!startingCell.IsValid)
+			{
+				throw new ArgumentException("startingCell must be valid.", "location");
+			}
+			if (startingCell.Owner != playArea)
+			{
+				throw new ArgumentException("startingCell must be owned by the specified Grid.", "location");
+			}
+			if (!playArea.IsDefined(startingCell))
+			{
+				throw new ArgumentOutOfRangeException("startingCell must be within the specified Grid.", "location");
+			}
 			if (initialLength <= 0)
 			{
 				throw new ArgumentOutOfRangeException("initialLength", _LENGTH_ERROR);
@@ -91,17 +107,17 @@ namespace SnakeGame
 						int cellY;
 						bool changeX = node.MovementDirection.GetAxis() == Axis2D.X;
 						int increment = node.MovementDirection.Invert().Sign();
-						for (int i = 0; i < difference; i++)
+						for (int i = 1; i <= difference; i++)
 						{
 							if (changeX)
 							{
-								cellX = node.Cell.X + increment;
+								cellX = node.Cell.X + i*increment;
 								cellY = node.Cell.Y;
 							}
 							else
 							{
 								cellX = node.Cell.X;
-								cellY = node.Cell.Y + increment;
+								cellY = node.Cell.Y + i*increment;
 							}
 							_history.AddLast(new MovementNode(PlayArea[cellX, cellY], node.MovementDirection));
 						}
@@ -122,7 +138,7 @@ namespace SnakeGame
 		/// <summary>
 		/// Gets the set of cells occupied by the snake.
 		/// </summary>
-		IEnumerable<Grid.Cell> IGridOccupier.OccupiedCells
+		public IEnumerable<Grid.Cell> OccupiedCells
 		{
 			get
 			{

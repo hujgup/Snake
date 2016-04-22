@@ -9,15 +9,21 @@ namespace SnakeGame.GridSystem
 	[TestFixture()]
 	public class TestAxis2D
 	{
+		private void SurpressUnusedWarning(object o)
+		{
+		}
 		/// <summary>
 		/// Checks that all the enumerations exist.
 		/// </summary>
 		[Test()]
 		public void EnumsExist()
 		{
-			Assert.DoesNotThrow(delegate() {
-				Axis2D a = Axis2D.X;
+			Axis2D a;
+			Assert.DoesNotThrow(delegate()
+			{
+				a = Axis2D.X;
 				a = Axis2D.Y;
+				SurpressUnusedWarning(a);
 			}, "Axis2D.X and Axis2D.Y must both exist.");
 		}
 	}

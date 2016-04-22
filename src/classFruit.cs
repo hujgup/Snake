@@ -10,6 +10,13 @@ namespace SnakeGame
 	public class Fruit : IGridSingletonOccupier
 	{
 		private Grid.Cell _location;
+		private void CtorCheckGrid(Grid playArea)
+		{
+			if (playArea == null)
+			{
+				throw new ArgumentNullException("playArea", "playArea cannot be null.");
+			}
+		}
 		/// <summary>
 		/// Initializes a new instance of the <see cref="SnakeGame.Fruit"/> class.
 		/// </summary>
@@ -18,6 +25,7 @@ namespace SnakeGame
 		/// <param name="value">The amount to grow an eater of this fruit by when it is eaten.</param>
 		public Fruit(Grid playArea, Grid.Cell location, int value)
 		{
+			CtorCheckGrid(playArea);
 			if (!location.IsValid)
 			{
 				throw new ArgumentException("Location must be valid.", "location");
@@ -42,6 +50,7 @@ namespace SnakeGame
 		/// <param name="value">The amount to grow an eater of this fruit by when it is eaten.</param>
 		public Fruit(Grid playArea, List<Grid.Cell> exclude, int value)
 		{
+			CtorCheckGrid(playArea);
 			PlayArea = playArea;
 			Value = value;
 			RandomizeLocation(exclude);
@@ -54,6 +63,7 @@ namespace SnakeGame
 		/// <param name="value">The amount to grow an eater of this fruit by when it is eaten.</param>
 		public Fruit(Grid playArea, IEnumerable<Grid.Cell> exclude, int value)
 		{
+			CtorCheckGrid(playArea);
 			PlayArea = playArea;
 			Value = value;
 			RandomizeLocation(exclude);
@@ -65,6 +75,7 @@ namespace SnakeGame
 		/// <param name="value">The amount to grow an eater of this fruit by when it is eaten.</param>
 		public Fruit(Grid playArea, int value)
 		{
+			CtorCheckGrid(playArea);
 			PlayArea = playArea;
 			Value = value;
 			RandomizeLocation();

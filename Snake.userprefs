@@ -1,16 +1,19 @@
 ﻿<Properties StartupItem="Snake.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\classFruit.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\Main.cs">
     <Files>
-      <File FileName="src\namespaceGridSystem\classGrid.cs" Line="278" Column="30" />
-      <File FileName="src\namespaceGridSystem\tests\testGrid.cs" Line="64" Column="49" />
-      <File FileName="src\classSnake.cs" Line="26" Column="3" />
-      <File FileName="src\classFruit.cs" Line="12" Column="1" />
-      <File FileName="src\tests\testFruit.cs" Line="10" Column="54" />
+      <File FileName="src\classSnake.cs" Line="12" Column="63" />
+      <File FileName="src\tests\testSnake.cs" Line="10" Column="1" />
+      <File FileName="src\Main.cs" Line="71" Column="32" />
+      <File FileName="src\namespaceGridSystem\tests\testAxis2D.cs" Line="26" Column="2" />
+      <File FileName="src\classRenderEvents.cs" Line="10" Column="1" />
+      <File FileName="src\classSnakeMover.cs" Line="22" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="E:\Halo\Coding\Snake\src\Main.cs" line="17" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

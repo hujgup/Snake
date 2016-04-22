@@ -79,16 +79,20 @@ namespace SnakeGame.GridSystem
 			TestValidGrid(10, 8);
 			TestValidGrid(128, 131);
 			TestValidGrid(1, 1);
-			Assert.Throws<ArgumentOutOfRangeException>(delegate() {
+			Assert.Throws<ArgumentOutOfRangeException>(delegate()
+			{
 				Grid g = new Grid(0, 0);
 			}, "Constructing a grid of 0 width and 0 height must throw an ArgumentOutOfRangeException.");
-			Assert.Throws<ArgumentOutOfRangeException>(delegate() {
+			Assert.Throws<ArgumentOutOfRangeException>(delegate()
+			{
 				Grid g = new Grid(-1, 8);
 			}, "Constructing a grid of 0 height must throw an ArgumentOutOfRangeException.");
-			Assert.Throws<ArgumentOutOfRangeException>(delegate() {
+			Assert.Throws<ArgumentOutOfRangeException>(delegate()
+			{
 				Grid g = new Grid(8, -1);
 			}, "Constructing a grid of 0 width must throw an ArgumentOutOfRangeException.");
-			Assert.Throws<ArgumentOutOfRangeException>(delegate() {
+			Assert.Throws<ArgumentOutOfRangeException>(delegate()
+			{
 				Grid g = new Grid(-1, -1);
 			}, "Constructing a grid of negative width and negative height must throw an ArgumentOutOfRangeException.");
 		}
@@ -119,7 +123,7 @@ namespace SnakeGame.GridSystem
 		{
 			Grid g = new Grid(16, 16);
 			int max = 65536;
-			Dictionary<Grid.Cell,int> cells = new Dictionary<Grid.Cell,int>(max);
+			Dictionary<Grid.Cell, int> cells = new Dictionary<Grid.Cell, int>(max);
 			{
 				Grid.Cell c;
 				for (int i = 0; i < max; i++)
@@ -136,13 +140,13 @@ namespace SnakeGame.GridSystem
 				}
 				int expected = 256;
 				int errorMargin = 64;
-				double value;
-				foreach (KeyValuePair<Grid.Cell,int> kvp in cells)
+				int value;
+				foreach (KeyValuePair<Grid.Cell, int> kvp in cells)
 				{
 					value = Math.Abs(kvp.Value - expected);
 					if (value > errorMargin)
 					{
-						Assert.Fail("Grid.GetRandomCell() randomization not random enough: Expected a value within " + errorMargin.ToString() + " of " + expected.ToString() + ", but was " + value.ToString() + "away. Note that this check may fail due to random chance - try running the tests again.");
+						Assert.Fail("Grid.GetRandomCell() randomization not random enough: Expected a value within " + errorMargin.ToString() + " of " + expected.ToString() + ", but was " + value.ToString() + " away (value = " + kvp.Value.ToString() + "). Note that this check may fail due to random chance - try running the tests again.");
 					}
 				}
 			}
@@ -170,7 +174,7 @@ namespace SnakeGame.GridSystem
 						{
 							fail += eCell.ToString()+", ";
 						}
-						fail = fail.Substring(0,fail.Length - 2) + "}, but was " + c.ToString() + ".";
+						fail = fail.Substring(0, fail.Length - 2) + "}, but was " + c.ToString() + ".";
 						Assert.Fail(fail);
 					}
 					else if (cells.ContainsKey(c))
@@ -184,13 +188,13 @@ namespace SnakeGame.GridSystem
 				}
 				int expected = 264;
 				int errorMargin = 66;
-				double value;
-				foreach (KeyValuePair<Grid.Cell,int> kvp in cells)
+				int value;
+				foreach (KeyValuePair<Grid.Cell, int> kvp in cells)
 				{
 					value = Math.Abs(kvp.Value - expected);
 					if (value > errorMargin)
 					{
-						Assert.Fail("Grid.GetRandomCell(List<Grid.Cell>) randomization not random enough: Expected a value within " + errorMargin.ToString() + " of " + expected.ToString() + ", but was " + value.ToString() + "away. Note that this check may fail due to random chance - try running the tests again.");
+						Assert.Fail("Grid.GetRandomCell(List<Grid.Cell>) randomization not random enough: Expected a value within " + errorMargin.ToString() + " of " + expected.ToString() + ", but was " + value.ToString() + " away (value = " + kvp.Value.ToString() + "). Note that this check may fail due to random chance - try running the tests again.");
 					}
 				}
 			}
