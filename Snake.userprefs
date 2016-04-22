@@ -1,8 +1,19 @@
 ﻿<Properties StartupItem="Snake.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\namespaceGridSystem\tests\testAxis2D.cs">
     <Files>
-      <File FileName="Main.cs" Line="4" Column="2" />
+      <File FileName="src\classSnake.cs" Line="1" Column="1" />
+      <File FileName="src\enumDirection.cs" Line="1" Column="1" />
+      <File FileName="src\classMovementNode.cs" Line="1" Column="1" />
+      <File FileName="src\Main.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceGridSystem\classGrid.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceGridSystem\tests\testGrid.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceGridSystem\tests\testRangeRestriction.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceGridSystem\classRangeRestriction.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceGridSystem\enumAxis2D.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceGridSystem\tests\testAxis2D.cs" Line="21" Column="7" />
+      <File FileName="src\namespaceGridSystem\iGridOccupier.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceGridSystem\iGridSingletonOccupier.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

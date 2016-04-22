@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{873C42DB-C9A9-43E7-8366-5DD8805405A2}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Snake</RootNamespace>
+    <RootNamespace>SnakeGame</RootNamespace>
     <AssemblyName>Snake</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -31,18 +31,36 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="Main.cs" />
+    <Compile Include="src\namespaceGridSystem\classGrid.cs" />
+    <Compile Include="src\namespaceGridSystem\enumAxis2D.cs" />
+    <Compile Include="src\namespaceGridSystem\iGridOccupier.cs" />
+    <Compile Include="src\namespaceGridSystem\iGridSingletonOccupier.cs" />
+    <Compile Include="src\classSnake.cs" />
+    <Compile Include="src\Main.cs" />
+    <Compile Include="src\enumDirection.cs" />
+    <Compile Include="src\classMovementNode.cs" />
+    <Compile Include="src\namespaceGridSystem\tests\testGrid.cs" />
+    <Compile Include="src\namespaceGridSystem\classRangeRestriction.cs" />
+    <Compile Include="src\namespaceGridSystem\tests\testRangeRestriction.cs" />
+    <Compile Include="src\namespaceGridSystem\tests\testAxis2D.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="src\" />
+    <Folder Include="src\tests\" />
+    <Folder Include="src\namespaceGridSystem\tests\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\xml\highscores.xsd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
