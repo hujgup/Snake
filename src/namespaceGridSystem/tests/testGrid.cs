@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace SnakeGame.GridSystem
@@ -43,6 +44,7 @@ namespace SnakeGame.GridSystem
 			Assert.IsFalse(g[0, height].IsValid, "Out-of-range cells must be invalid cells (0, height).");
 			Assert.IsFalse(g.IsDefined(width, height), "Out-of-range points must be undefined (width, height).");
 			Assert.IsFalse(g[width, height].IsValid, "Out-of-range cells must be invalid cells (width, height).");
+			Assert.IsInstanceOf<IEnumerable<Grid.Cell>>(g, "Grid must implement IEnumerable<Grid.Cell>.");
 		}
 		private void TestCell(Grid g, int x, int y)
 		{
@@ -57,7 +59,7 @@ namespace SnakeGame.GridSystem
 			Assert.IsTrue(c.Equals(c2), "Grid.Cell structural equality must be defined (IEquatable Equals).");
 			Assert.IsTrue(c == c2, "Grid.Cell structural equality must be defined (== operator).");
 			Assert.IsFalse(c != c2, "Grid.Cell structural inequality must be defined (!= operator).");
-			Assert.IsInstanceOf<IEquatable<Grid.Cell>>(c, "Grid.Cell must implement IEquatable<GridCell>.");
+			Assert.IsInstanceOf<IEquatable<Grid.Cell>>(c, "Grid.Cell must implement IEquatable<Grid.Cell>.");
 			Assert.AreEqual("(" + x.ToString() + ", " + y.ToString() + ")", c.ToString(), "ToString() must output the correct format.");
 			Assert.IsTrue(g.IsDefined(c.X, c.Y), "A valid cell must always be defined in a grid whose range contains it (by axis).");
 			Assert.IsTrue(g.IsDefined(c), "A valid cell must always be defined in a grid whose range contains it (pass cell).");
@@ -102,6 +104,97 @@ namespace SnakeGame.GridSystem
 		public void InvalidCell()
 		{
 			Assert.IsFalse(Grid.Cell.INVALID_CELL.IsValid, "The Grid.Cell.INVALID_CELL constant must have its IsValid property set to false.");
+		}
+		/// <summary>
+		/// Tests that the grid random cell selection is working correctly.
+		/// </summary>
+		[Test()]
+		public void Randomization()
+		{
+			Grid g = new Grid(16, 16);
+			int max = 65536;
+			Dictionary<Grid.Cell,int> cells = new Dictionary<Grid.Cell,int>(max);
+			{
+				Grid.Cell c;
+				for (int i = 0; i < max; i++)
+				{
+					c = g.GetRandomCell();
+					if (cells.ContainsKey(c))
+					{
+						cells[c]++;
+					}
+					else
+					{
+						cells.Add(c, 1);
+					}
+				}
+				int expected = 256;
+				int errorMargin = 64;
+				double value;
+				foreach (KeyValuePair<Grid.Cell,int> kvp in cells)
+				{
+					value = Math.Abs(kvp.Value - expected);
+					if (value > errorMargin)
+					{
+						Assert.Fail("Grid.GetRandomCell() randomization not random enough: Expected a value within " + errorMargin.ToString() + " of " + expected.ToString() + ", but was " + value.ToString() + "away. Note that this check may fail due to random chance - try running the tests again.");
+					}
+				}
+			}
+
+			cells.Clear();
+
+			{
+				List<Grid.Cell> exclude = new List<Grid.Cell>(8);
+				exclude.Add(g[0, 0]);
+				exclude.Add(g[0, 1]);
+				exclude.Add(g[15, 6]);
+				exclude.Add(g[7, 7]);
+				exclude.Add(g[4, 8]);
+				exclude.Add(g[4, 8]);
+				exclude.Add(g[10, 10]);
+				exclude.Add(g[9, 0]);
+				Grid.Cell c;
+				for (int i = 0; i < max; i++)
+				{
+					c = g.GetRandomCell(exclude);
+					if (exclude.Contains(c))
+					{
+						string fail = "Grid.GetRandomCell(List<Grid.Cell>) not excluding specified cells: Expected any cell except those in the set {";
+						foreach (Grid.Cell eCell in exclude)
+						{
+							fail += eCell.ToString()+", ";
+						}
+						fail = fail.Substring(0,fail.Length - 2) + "}, but was " + c.ToString() + ".";
+						Assert.Fail(fail);
+					}
+					else if (cells.ContainsKey(c))
+					{
+						cells[c]++;
+					}
+					else
+					{
+						cells.Add(c, 1);
+					}
+				}
+				int expected = 264;
+				int errorMargin = 66;
+				double value;
+				foreach (KeyValuePair<Grid.Cell,int> kvp in cells)
+				{
+					value = Math.Abs(kvp.Value - expected);
+					if (value > errorMargin)
+					{
+						Assert.Fail("Grid.GetRandomCell(List<Grid.Cell>) randomization not random enough: Expected a value within " + errorMargin.ToString() + " of " + expected.ToString() + ", but was " + value.ToString() + "away. Note that this check may fail due to random chance - try running the tests again.");
+					}
+				}
+			}
+
+			{
+				g = new Grid(1, 1);
+				List<Grid.Cell> exclude = new List<Grid.Cell>(1);
+				exclude.Add(g[0, 0]);
+				Assert.IsFalse(g.GetRandomCell(exclude).IsValid, "Attempting to get a random cell when all cells in a grid have been excluded should return an invalid cell.");
+			}
 		}
 	}
 }

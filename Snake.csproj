@@ -43,6 +43,7 @@
     <Compile Include="src\namespaceGridSystem\classRangeRestriction.cs" />
     <Compile Include="src\namespaceGridSystem\tests\testRangeRestriction.cs" />
     <Compile Include="src\namespaceGridSystem\tests\testAxis2D.cs" />
+    <Compile Include="src\classFruit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SnakeGame.GridSystem
 {
 	/// <summary>
 	/// Represents a grid of cells.
 	/// </summary>
-	public class Grid
+	public class Grid : IEnumerable<Grid.Cell>
 	{
 		/// <summary>
 		/// Represents a single cell in a grid.
@@ -111,6 +113,7 @@ namespace SnakeGame.GridSystem
 		}
 
 		private List<List<Cell>> _cells;
+		private Random _rng;
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Snake.GridSystem.Grid"/> class.
 		/// </summary>
@@ -126,6 +129,7 @@ namespace SnakeGame.GridSystem
 			{
 				throw new ArgumentOutOfRangeException("height", height, "Height must be a positive number.");
 			}
+			_rng = new Random();
 			_cells = new List<List<Cell>>(height);
 			List<Cell> row;
 			int x;
@@ -218,6 +222,29 @@ namespace SnakeGame.GridSystem
 				return Width * Height;
 			}
 		}
+		/// <summary>
+		/// Gets all the cells enclosed by this grid.
+		/// </summary>
+		public ReadOnlyCollection<Cell> AllCells
+		{
+			get
+			{
+				int count = CellCount;
+				Cell[] res = new Cell[count];
+				int x = 0;
+				int y = 0;
+				for (int i = 0; i < count; i++)
+				{
+					res[i] = this[x++, y];
+					if (x == Width)
+					{
+						x = 0;
+						y++;
+					}
+				}
+				return new ReadOnlyCollection<Cell>(res);
+			}
+		}
 		private string FormatRange(int lowerBound, int upperBound)
 		{
 			return "[" + lowerBound.ToString() + ", " + upperBound.ToString() + "]";
@@ -248,6 +275,78 @@ namespace SnakeGame.GridSystem
 		public RangeRestriction<int> GetAxisRange(Axis2D axis)
 		{
 			return axis == Axis2D.X ? RangeX : RangeY;
+		}
+		/// <summary>
+		/// Gets a randomly selected cell from this grid.
+		/// </summary>
+		/// <param name="exclude">The set of cells that will never get selected.</param>
+		public Cell GetRandomCell(List<Cell> exclude)
+		{
+			Cell res;
+			List<Cell> chooseCells;
+			int capacity = CellCount - exclude.Count;
+			if (capacity > 0)
+			{
+				chooseCells = new List<Cell>(capacity);
+				foreach (Cell c in this)
+				{
+					if (!exclude.Contains(c))
+					{
+						chooseCells.Add(c);
+					}
+				}
+			}
+			else
+			{
+				chooseCells = new List<Cell>(0);
+			}
+			if (chooseCells.Count > 0)
+			{
+				res = chooseCells[_rng.Next(0,chooseCells.Count)];
+			}
+			else
+			{
+				res = Cell.INVALID_CELL;
+			}
+			return res;
+		}
+		/// <summary>
+		/// Gets a randomly selected cell from this grid.
+		/// </summary>
+		/// <param name="exclude">The set of cells that will never get selected.</param>
+		public Cell GetRandomCell(IEnumerable<Cell> exclude)
+		{
+			List<Cell> excludeCells = new List<Cell>();
+			IEnumerator<Cell> enumerator = exclude.GetEnumerator();
+			while (enumerator.MoveNext())
+			{
+				if (IsDefined(enumerator.Current))
+				{
+					excludeCells.Add(enumerator.Current);
+				}
+			}
+			return GetRandomCell(excludeCells);
+		}
+		/// <summary>
+		/// Gets a randomly selected cell from this grid.
+		/// </summary>
+		public Cell GetRandomCell()
+		{
+			return GetRandomCell(new Cell[0]);
+		}
+		/// <summary>
+		/// Returns an IEnumerator for the current instance.
+		/// </summary>
+		public IEnumerator<Cell> GetEnumerator()
+		{
+			return (IEnumerator<Cell>)AllCells.GetEnumerator();
+		}
+		/// <summary>
+		/// Returns an IEnumerator for the current instance.
+		/// </summary>
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return this.GetEnumerator();
 		}
 	}
 }
