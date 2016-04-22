@@ -275,7 +275,7 @@ namespace SnakeGame.GridSystem
 		/// <param name="c">the cell to check.</param>
 		public bool IsDefined(Grid.Cell c)
 		{
-			return IsDefined(c.X, c.Y);
+			return c.Owner == this && IsDefined(c.X, c.Y);
 		}
 		/// <summary>
 		/// Gets the range of valid values along the specified axis.

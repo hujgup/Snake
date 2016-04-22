@@ -7,6 +7,9 @@ namespace SnakeGame
 	[TestFixture()]
 	public class TestFruit
 	{
+		private void TestConstruction(Grid g, Grid.Cell loc, int value)
+		{
+		}
 		private void TestConstruction(Grid g, int value)
 		{
 			Fruit f = new Fruit(g, value);
