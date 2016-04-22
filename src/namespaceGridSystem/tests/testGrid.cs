@@ -50,6 +50,7 @@ namespace SnakeGame.GridSystem
 		{
 			Grid.Cell c = g[x, y];
 			Assert.IsTrue(c.IsValid, "A valid cell must not be flagged as invalid.");
+			Assert.AreEqual(g, c.Owner, "The cell must be owned by the specified grid.");
 			Assert.AreEqual(x, c.X, "The X componet of the cell must correspond to the first value passed to the Grid indexer.");
 			Assert.AreEqual(y, c.Y, "The Y componet of the cell must correspond to the second value passed to the Grid indexer.");
 			Assert.AreEqual(c.X, c.GetAxisValue(Axis2D.X), "GetAxisValue(Axis2D.X) must return the same value as the X property.");
@@ -63,6 +64,11 @@ namespace SnakeGame.GridSystem
 			Assert.AreEqual("(" + x.ToString() + ", " + y.ToString() + ")", c.ToString(), "ToString() must output the correct format.");
 			Assert.IsTrue(g.IsDefined(c.X, c.Y), "A valid cell must always be defined in a grid whose range contains it (by axis).");
 			Assert.IsTrue(g.IsDefined(c), "A valid cell must always be defined in a grid whose range contains it (pass cell).");
+			Grid g2 = new Grid(g.Width, g.Height);
+			Grid.Cell c3 = g2[x, y];
+			Assert.AreNotEqual(c, c3, "Two cells with the same dimensions but not the same owner should not be equal.");
+			Grid.Cell c4 = g[x != 0 ? x - 1 : x + 1, y != 0 ? y - 1 : y + 1];
+			Assert.AreNotEqual(c, c4, "Two cells with the same owner but not the same dimensions should not be equal.");
 		}
 		/// <summary>
 		/// Tests that grids behave a certian way for any given set of values.

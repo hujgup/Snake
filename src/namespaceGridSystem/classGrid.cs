@@ -18,16 +18,25 @@ namespace SnakeGame.GridSystem
 			/// <summary>
 			/// A cell that is out-of-range of all possible grids.
 			/// </summary>
-			public static readonly Cell INVALID_CELL = new Cell(-1, -1);
+			public static readonly Cell INVALID_CELL = new Cell(null, -1, -1);
 			/// <summary>
 			/// Initializes a new instance of the <see cref="Snake.GridSystem.Grid+Cell"/> struct.
 			/// </summary>
 			/// <param name="x">The x coordinate of this cell.</param>
 			/// <param name="y">The y coordinate of this cell.</param>
-			public Cell(int x, int y) : this()
+			public Cell(Grid owner, int x, int y) : this()
 			{
+				Owner = owner;
 				X = x;
 				Y = y;
+			}
+			/// <summary>
+			/// Gets the Grid that this cell belongs to.
+			/// </summary>
+			public Grid Owner
+			{
+				get;
+				private set;
 			}
 			/// <summary>
 			/// Gets the x value of this cell.
@@ -53,7 +62,7 @@ namespace SnakeGame.GridSystem
 			{
 				get
 				{
-					return X >= 0 && Y >= 0;
+					return Owner != null && X >= 0 && Y >= 0;
 				}
 			}
 			/// <summary>
@@ -79,7 +88,7 @@ namespace SnakeGame.GridSystem
 			{
 				unchecked
 				{
-					return X.GetHashCode() + Y.GetHashCode();
+					return Owner.GetHashCode() + X.GetHashCode() + Y.GetHashCode();
 				}
 			}
 			/// <summary>
@@ -100,7 +109,7 @@ namespace SnakeGame.GridSystem
 			/// <see cref="Snake.GridSystem.Grid+Cell"/>; otherwise, <c>false</c>.</returns>
 			public bool Equals(Cell other)
 			{
-				return X == other.X && Y == other.Y;
+				return Owner == other.Owner && X == other.X && Y == other.Y;
 			}
 			public static bool operator ==(Cell a, Cell b)
 			{
@@ -138,7 +147,7 @@ namespace SnakeGame.GridSystem
 				row = new List<Cell>(width);
 				for (x = 0; x < width; x++)
 				{
-					row.Add(new Cell(x, y));
+					row.Add(new Cell(this, x, y));
 				}
 				_cells.Add(row);
 			}
