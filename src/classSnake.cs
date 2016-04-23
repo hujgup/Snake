@@ -11,7 +11,7 @@ namespace SnakeGame
 	/// </summary>
 	public class Snake : IGridOccupier, IEnumerable<MovementNode>
 	{
-		private const string _LENGTH_ERROR = "Length must be a positive number.";
+		private const string _LENGTH_ERROR = "Length must not be below 2.";
 		private LinkedList<MovementNode> _history;
 		/// <summary>
 		/// Initializes a new instance of the <see cref="SnakeGame.Snake"/> class.
@@ -19,8 +19,8 @@ namespace SnakeGame
 		/// <param name="playArea">A grid defining the area of play.</param>
 		/// <param name="startingCell">The cell to start the game at.</param>
 		/// <param name="initialLength">The initial length of the snake's tail.</param>
-		/// <param name="tailDirection">The direction that the snake's initial motion should be towards.</param>
-		public Snake(Grid playArea, Grid.Cell startingCell, int initialLength, Direction initialDirection)
+		/// <param name="initialDirection">The direction that the snake's initial motion should be towards.</param>
+		public Snake(Grid playArea, Cell startingCell, int initialLength, Direction initialDirection)
 		{
 			if (playArea == null)
 			{
@@ -38,7 +38,7 @@ namespace SnakeGame
 			{
 				throw new ArgumentOutOfRangeException("startingCell must be within the specified Grid.", "location");
 			}
-			if (initialLength <= 0)
+			if (initialLength < 2)
 			{
 				throw new ArgumentOutOfRangeException("initialLength", _LENGTH_ERROR);
 			}
@@ -67,11 +67,21 @@ namespace SnakeGame
 		/// <summary>
 		/// Gets the head of the snake.
 		/// </summary>
-		public Grid.Cell Head
+		public MovementNode Head
 		{
 			get
 			{
-				return _history.First.Value.Cell;
+				return _history.First.Value;
+			}
+		}
+		/// <summary>
+		/// Gets the end of the snake's tail.
+		/// </summary>
+		public MovementNode End
+		{
+			get
+			{
+				return _history.Last.Value;
 			}
 		}
 		/// <summary>
@@ -89,7 +99,7 @@ namespace SnakeGame
 				{
 					if (value < Length)
 					{
-						if (value < 0)
+						if (value < 2)
 						{
 							throw new ArgumentOutOfRangeException("value", _LENGTH_ERROR);
 						}
@@ -111,13 +121,13 @@ namespace SnakeGame
 						{
 							if (changeX)
 							{
-								cellX = node.Cell.X + i*increment;
+								cellX = node.Cell.X + i * increment;
 								cellY = node.Cell.Y;
 							}
 							else
 							{
 								cellX = node.Cell.X;
-								cellY = node.Cell.Y + i*increment;
+								cellY = node.Cell.Y + i * increment;
 							}
 							_history.AddLast(new MovementNode(PlayArea[cellX, cellY], node.MovementDirection));
 						}
@@ -138,11 +148,11 @@ namespace SnakeGame
 		/// <summary>
 		/// Gets the set of cells occupied by the snake.
 		/// </summary>
-		public IEnumerable<Grid.Cell> OccupiedCells
+		public IEnumerable<Cell> OccupiedCells
 		{
 			get
 			{
-				List<Grid.Cell> res = new List<Grid.Cell>(_history.Count);
+				List<Cell> res = new List<Cell>(_history.Count);
 				foreach (MovementNode node in _history)
 				{
 					res.Add(node.Cell);
@@ -155,8 +165,8 @@ namespace SnakeGame
 		/// </summary>
 		public void Move()
 		{
-			int x = Head.X;
-			int y = Head.Y;
+			int x = Head.Cell.X;
+			int y = Head.Cell.Y;
 			if (MovementDirection.GetAxis() == Axis2D.X)
 			{
 				x += MovementDirection.Sign();

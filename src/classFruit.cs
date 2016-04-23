@@ -9,7 +9,7 @@ namespace SnakeGame
 	/// </summary>
 	public class Fruit : IGridSingletonOccupier
 	{
-		private Grid.Cell _location;
+		private Cell _location;
 		private void CtorCheckGrid(Grid playArea)
 		{
 			if (playArea == null)
@@ -23,7 +23,7 @@ namespace SnakeGame
 		/// <param name="playArea">The play area this fruit belongs to.</param>
 		/// <param name="location">The location to spawn the fruit at.</param> 
 		/// <param name="value">The amount to grow an eater of this fruit by when it is eaten.</param>
-		public Fruit(Grid playArea, Grid.Cell location, int value)
+		public Fruit(Grid playArea, Cell location, int value)
 		{
 			CtorCheckGrid(playArea);
 			if (!location.IsValid)
@@ -48,7 +48,7 @@ namespace SnakeGame
 		/// <param name="playArea">The play area this fruit belongs to.</param>
 		/// <param name="exclude">The set of points this fruit should not initially spawn at.</param>
 		/// <param name="value">The amount to grow an eater of this fruit by when it is eaten.</param>
-		public Fruit(Grid playArea, List<Grid.Cell> exclude, int value)
+		public Fruit(Grid playArea, List<Cell> exclude, int value)
 		{
 			CtorCheckGrid(playArea);
 			PlayArea = playArea;
@@ -61,7 +61,7 @@ namespace SnakeGame
 		/// <param name="playArea">The play area this fruit belongs to.</param>
 		/// <param name="exclude">The set of points this fruit should not initially spawn at.</param>
 		/// <param name="value">The amount to grow an eater of this fruit by when it is eaten.</param>
-		public Fruit(Grid playArea, IEnumerable<Grid.Cell> exclude, int value)
+		public Fruit(Grid playArea, IEnumerable<Cell> exclude, int value)
 		{
 			CtorCheckGrid(playArea);
 			PlayArea = playArea;
@@ -91,7 +91,7 @@ namespace SnakeGame
 		/// <summary>
 		/// Gets the cell occupied by this fruit.
 		/// </summary>
-		public Grid.Cell OccupiedCell
+		public Cell OccupiedCell
 		{
 			get
 			{
@@ -126,7 +126,7 @@ namespace SnakeGame
 		/// Randomizes the location of this fruit.
 		/// </summary>
 		/// <param name="exclude">The set of points that this fruit should not appear at.</param>
-		public void RandomizeLocation(List<Grid.Cell> exclude)
+		public void RandomizeLocation(List<Cell> exclude)
 		{
 			_location = PlayArea.GetRandomCell(exclude);
 		}
@@ -134,7 +134,7 @@ namespace SnakeGame
 		/// Randomizes the location of this fruit.
 		/// </summary>
 		/// <param name="exclude">The set of points that this fruit should not appear at.</param>
-		public void RandomizeLocation(IEnumerable<Grid.Cell> exclude)
+		public void RandomizeLocation(IEnumerable<Cell> exclude)
 		{
 			_location = PlayArea.GetRandomCell(exclude);
 		}
@@ -144,14 +144,6 @@ namespace SnakeGame
 		public void RandomizeLocation()
 		{
 			_location = PlayArea.GetRandomCell();
-		}
-		/// <summary>
-		/// Causes this fruit to be eaten.
-		/// </summary>
-		/// <param name="eater">The entity eating this fruit.</param>
-		public void Eat(Snake eater)
-		{
-			// TODO
 		}
 	}
 }

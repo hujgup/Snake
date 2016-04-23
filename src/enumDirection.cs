@@ -8,9 +8,21 @@ namespace SnakeGame
 	/// </summary>
 	public enum Direction
 	{
+		/// <summary>
+		/// The up direction.
+		/// </summary>
 		Up,
+		/// <summary>
+		/// The right direction.
+		/// </summary>
 		Right,
+		/// <summary>
+		/// The down direction.
+		/// </summary>
 		Down,
+		/// <summary>
+		/// The left direction.
+		/// </summary>
 		Left
 	}
 	/// <summary>
@@ -19,7 +31,7 @@ namespace SnakeGame
 	public static class DirectionExtensions
 	{
 		/// <summary>
-		/// Gets the increment value for movement in this direction.
+		/// Gets the increment value for movement in this direction, according to top-left = (0, 0) systems.
 		/// </summary>
 		/// <param name="dir">The direction being moved along.</param>
 		public static int Sign(this Direction dir)
@@ -59,6 +71,44 @@ namespace SnakeGame
 			return res;
 		}
 		/// <summary>
+		/// Gets the direction 90*steps degrees anticlockwise from this direction.
+		/// </summary>
+		/// <param name="dir">The direction to rotate.</param>
+		/// <param name="steps">The number of times to rotate.</param> 
+		public static Direction RotateAnticlockwise(this Direction dir, int steps)
+		{
+			Direction res;
+			steps %= 4;
+			if (steps == 0)
+			{
+				res = dir;
+			}
+			else
+			{
+				int absSteps = Math.Abs(steps);
+				if (absSteps == 2)
+				{
+					res = dir.Invert();
+				}
+				else
+				{
+					if (absSteps == 1)
+					{
+						res = dir.RotateAnticlockwise();
+					}
+					else
+					{
+						res = dir.RotateClockwise();
+					}
+					if (steps < 0)
+					{
+						res = res.Invert();
+					}
+				}
+			}
+			return res;
+		}
+		/// <summary>
 		/// Gets the direction 90 degrees anticlockwise from this direction.
 		/// </summary>
 		/// <param name="dir">The direction to rotate.</param>
@@ -83,28 +133,21 @@ namespace SnakeGame
 			return res;
 		}
 		/// <summary>
+		/// Gets the direction 90*steps degrees clockwise from this direction.
+		/// </summary>
+		/// <param name="dir">The direction to rotate.</param>
+		/// <param name="steps">The number of times to rotate.</param> 
+		public static Direction RotateClockwise(this Direction dir, int steps)
+		{
+			return dir.RotateAnticlockwise(-steps);
+		}
+		/// <summary>
 		/// Gets the direction 90 degrees clockwise from this direction.
 		/// </summary>
 		/// <param name="dir">The direction to rotate.</param>
 		public static Direction RotateClockwise(this Direction dir)
 		{
-			Direction res;
-			switch (dir)
-			{
-				case SnakeGame.Direction.Down:
-					res = Direction.Left;
-					break;
-				case Direction.Left:
-					res = Direction.Up;
-					break;
-				case Direction.Right:
-					res = Direction.Down;
-					break;
-				default: // Direction.Up
-					res = Direction.Right;
-					break;
-			}
-			return res;
+			return dir.RotateAnticlockwise().Invert();
 		}
 	}
 }

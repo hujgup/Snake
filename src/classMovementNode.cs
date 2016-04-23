@@ -13,7 +13,7 @@ namespace SnakeGame
 		/// </summary>
 		/// <param name="cell">The cell moved to.</param>
 		/// <param name="dir">The direction of travel at the time of movement.</param>
-		public MovementNode(Grid.Cell cell, Direction dir)
+		public MovementNode(Cell cell, Direction dir)
 		{
 			Cell = cell;
 			MovementDirection = dir;
@@ -21,7 +21,7 @@ namespace SnakeGame
 		/// <summary>
 		/// Gets the cell that was moved to.
 		/// </summary>
-		public Grid.Cell Cell
+		public Cell Cell
 		{
 			get;
 			private set;

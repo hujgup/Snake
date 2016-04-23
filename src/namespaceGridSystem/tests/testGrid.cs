@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace SnakeGame.GridSystem
 {
 	/// <summary>
-	/// Provides unit tests for the Grid class, and the Grid.Cell class.
+	/// Provides unit tests for the Grid class.
 	/// </summary>
 	[TestFixture()]
 	public class TestGrid
@@ -28,10 +28,9 @@ namespace SnakeGame.GridSystem
 				for (x = 0; x < width; x++)
 				{
 					Assert.IsTrue(g.IsDefined(x, y), "All points in range must be defined.");
-					Assert.AreNotEqual(Grid.Cell.INVALID_CELL, g[x, y], "A point in range must be a valid cell.");
+					Assert.AreNotEqual(Cell.INVALID_CELL, g[x, y], "A point in range must be a valid cell.");
 				}
 			}
-			// TODO: Change indexer AreNotEqual checks to "does not throw exception" checks (and AreEqual to "does throw")
 			Assert.IsFalse(g.IsDefined(-1, 0), "Out-of-range points must be undefined (-1, 0).");
 			Assert.IsFalse(g[-1, 0].IsValid, "Out-of-range cells must be invalid cells (-1, 0).");
 			Assert.IsFalse(g.IsDefined(0, -1), "Out-of-range points must be undefined (0, -1).");
@@ -44,31 +43,7 @@ namespace SnakeGame.GridSystem
 			Assert.IsFalse(g[0, height].IsValid, "Out-of-range cells must be invalid cells (0, height).");
 			Assert.IsFalse(g.IsDefined(width, height), "Out-of-range points must be undefined (width, height).");
 			Assert.IsFalse(g[width, height].IsValid, "Out-of-range cells must be invalid cells (width, height).");
-			Assert.IsInstanceOf<IEnumerable<Grid.Cell>>(g, "Grid must implement IEnumerable<Grid.Cell>.");
-		}
-		private void TestCell(Grid g, int x, int y)
-		{
-			Grid.Cell c = g[x, y];
-			Assert.IsTrue(c.IsValid, "A valid cell must not be flagged as invalid.");
-			Assert.AreEqual(g, c.Owner, "The cell must be owned by the specified grid.");
-			Assert.AreEqual(x, c.X, "The X componet of the cell must correspond to the first value passed to the Grid indexer.");
-			Assert.AreEqual(y, c.Y, "The Y componet of the cell must correspond to the second value passed to the Grid indexer.");
-			Assert.AreEqual(c.X, c.GetAxisValue(Axis2D.X), "GetAxisValue(Axis2D.X) must return the same value as the X property.");
-			Assert.AreEqual(c.Y, c.GetAxisValue(Axis2D.Y), "GetAxisValue(Axis2D.Y) must return the same value as the Y property.");
-			Grid.Cell c2 = g[x, y];
-			Assert.AreEqual(c, c2, "Grid.Cell structural equality must be defined (AssertEquals).");
-			Assert.IsTrue(c.Equals(c2), "Grid.Cell structural equality must be defined (IEquatable Equals).");
-			Assert.IsTrue(c == c2, "Grid.Cell structural equality must be defined (== operator).");
-			Assert.IsFalse(c != c2, "Grid.Cell structural inequality must be defined (!= operator).");
-			Assert.IsInstanceOf<IEquatable<Grid.Cell>>(c, "Grid.Cell must implement IEquatable<Grid.Cell>.");
-			Assert.AreEqual("(" + x.ToString() + ", " + y.ToString() + ")", c.ToString(), "ToString() must output the correct format.");
-			Assert.IsTrue(g.IsDefined(c.X, c.Y), "A valid cell must always be defined in a grid whose range contains it (by axis).");
-			Assert.IsTrue(g.IsDefined(c), "A valid cell must always be defined in a grid whose range contains it (pass cell).");
-			Grid g2 = new Grid(g.Width, g.Height);
-			Grid.Cell c3 = g2[x, y];
-			Assert.AreNotEqual(c, c3, "Two cells with the same dimensions but not the same owner should not be equal.");
-			Grid.Cell c4 = g[x != 0 ? x - 1 : x + 1, y != 0 ? y - 1 : y + 1];
-			Assert.AreNotEqual(c, c4, "Two cells with the same owner but not the same dimensions should not be equal.");
+			Assert.IsInstanceOf<IEnumerable<Cell>>(g, "Grid must implement IEnumerable<Cell>.");
 		}
 		/// <summary>
 		/// Tests that grids behave a certian way for any given set of values.
@@ -97,25 +72,6 @@ namespace SnakeGame.GridSystem
 			}, "Constructing a grid of negative width and negative height must throw an ArgumentOutOfRangeException.");
 		}
 		/// <summary>
-		/// Tests that cells behave a certain way for any given set of values.
-		/// </summary>
-		[Test()]
-		public void Cells()
-		{
-			Grid g = new Grid(10, 10);
-			TestCell(g, 6, 9);
-			TestCell(g, 3, 6);
-			TestCell(g, 7, 4);
-		}
-		/// <summary>
-		/// Tests that the INVALID_CELL constant is an invalid cell.
-		/// </summary>
-		[Test()]
-		public void InvalidCell()
-		{
-			Assert.IsFalse(Grid.Cell.INVALID_CELL.IsValid, "The Grid.Cell.INVALID_CELL constant must have its IsValid property set to false.");
-		}
-		/// <summary>
 		/// Tests that the grid random cell selection is working correctly.
 		/// </summary>
 		[Test()]
@@ -123,9 +79,9 @@ namespace SnakeGame.GridSystem
 		{
 			Grid g = new Grid(16, 16);
 			int max = 65536;
-			Dictionary<Grid.Cell, int> cells = new Dictionary<Grid.Cell, int>(max);
+			Dictionary<Cell, int> cells = new Dictionary<Cell, int>(max);
 			{
-				Grid.Cell c;
+				Cell c;
 				for (int i = 0; i < max; i++)
 				{
 					c = g.GetRandomCell();
@@ -141,7 +97,7 @@ namespace SnakeGame.GridSystem
 				int expected = 256;
 				int errorMargin = 64;
 				int value;
-				foreach (KeyValuePair<Grid.Cell, int> kvp in cells)
+				foreach (KeyValuePair<Cell, int> kvp in cells)
 				{
 					value = Math.Abs(kvp.Value - expected);
 					if (value > errorMargin)
@@ -154,7 +110,7 @@ namespace SnakeGame.GridSystem
 			cells.Clear();
 
 			{
-				List<Grid.Cell> exclude = new List<Grid.Cell>(8);
+				List<Cell> exclude = new List<Cell>(8);
 				exclude.Add(g[0, 0]);
 				exclude.Add(g[0, 1]);
 				exclude.Add(g[15, 6]);
@@ -163,14 +119,14 @@ namespace SnakeGame.GridSystem
 				exclude.Add(g[4, 8]);
 				exclude.Add(g[10, 10]);
 				exclude.Add(g[9, 0]);
-				Grid.Cell c;
+				Cell c;
 				for (int i = 0; i < max; i++)
 				{
 					c = g.GetRandomCell(exclude);
 					if (exclude.Contains(c))
 					{
-						string fail = "Grid.GetRandomCell(List<Grid.Cell>) not excluding specified cells: Expected any cell except those in the set {";
-						foreach (Grid.Cell eCell in exclude)
+						string fail = "Grid.GetRandomCell(List<Cell>) not excluding specified cells: Expected any cell except those in the set {";
+						foreach (Cell eCell in exclude)
 						{
 							fail += eCell.ToString()+", ";
 						}
@@ -189,19 +145,19 @@ namespace SnakeGame.GridSystem
 				int expected = 264;
 				int errorMargin = 66;
 				int value;
-				foreach (KeyValuePair<Grid.Cell, int> kvp in cells)
+				foreach (KeyValuePair<Cell, int> kvp in cells)
 				{
 					value = Math.Abs(kvp.Value - expected);
 					if (value > errorMargin)
 					{
-						Assert.Fail("Grid.GetRandomCell(List<Grid.Cell>) randomization not random enough: Expected a value within " + errorMargin.ToString() + " of " + expected.ToString() + ", but was " + value.ToString() + " away (value = " + kvp.Value.ToString() + "). Note that this check may fail due to random chance - try running the tests again.");
+						Assert.Fail("Grid.GetRandomCell(List<Cell>) randomization not random enough: Expected a value within " + errorMargin.ToString() + " of " + expected.ToString() + ", but was " + value.ToString() + " away (value = " + kvp.Value.ToString() + "). Note that this check may fail due to random chance - try running the tests again.");
 					}
 				}
 			}
 
 			{
 				g = new Grid(1, 1);
-				List<Grid.Cell> exclude = new List<Grid.Cell>(1);
+				List<Cell> exclude = new List<Cell>(1);
 				exclude.Add(g[0, 0]);
 				Assert.IsFalse(g.GetRandomCell(exclude).IsValid, "Attempting to get a random cell when all cells in a grid have been excluded should return an invalid cell.");
 			}

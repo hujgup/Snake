@@ -10,7 +10,7 @@ namespace SnakeGame.GridSystem
 		/// <summary>
 		/// Gets the cell occupied by this entity.
 		/// </summary>
-		Grid.Cell OccupiedCell
+		Cell OccupiedCell
 		{
 			get;
 		}

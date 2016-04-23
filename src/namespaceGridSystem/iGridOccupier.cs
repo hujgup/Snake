@@ -11,7 +11,7 @@ namespace SnakeGame.GridSystem
 		/// <summary>
 		/// Gets the cells that this entity occupies.
 		/// </summary>
-		IEnumerable<Grid.Cell> OccupiedCells
+		IEnumerable<Cell> OccupiedCells
 		{
 			get;
 		}

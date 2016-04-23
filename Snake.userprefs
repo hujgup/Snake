@@ -1,13 +1,22 @@
 ﻿<Properties StartupItem="Snake.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\namespaceGridSystem\classCell.cs">
     <Files>
-      <File FileName="src\classSnake.cs" Line="12" Column="63" />
-      <File FileName="src\tests\testSnake.cs" Line="10" Column="1" />
-      <File FileName="src\Main.cs" Line="71" Column="32" />
-      <File FileName="src\namespaceGridSystem\tests\testAxis2D.cs" Line="26" Column="2" />
-      <File FileName="src\classRenderEvents.cs" Line="10" Column="1" />
-      <File FileName="src\classSnakeMover.cs" Line="22" Column="18" />
+      <File FileName="src\namespaceGridSystem\tests\testCell.cs" Line="7" Column="45" />
+      <File FileName="src\namespaceGridSystem\tests\testGrid.cs" Line="8" Column="44" />
+      <File FileName="src\namespaceGridSystem\classGrid.cs" Line="49" Column="48" />
+      <File FileName="src\classSnake.cs" Line="23" Column="79" />
+      <File FileName="src\namespaceGridSystem\classRangeRestriction.cs" Line="132" Column="1" />
+      <File FileName="src\tests\testFruit.cs" Line="72" Column="42" />
+      <File FileName="src\tests\testMovementNode.cs" Line="20" Column="39" />
+      <File FileName="src\tests\testSnake.cs" Line="218" Column="34" />
+      <File FileName="src\namespaceGraphics\classRenderEvents.cs" Line="38" Column="36" />
+      <File FileName="src\classSnakeMover.cs" Line="43" Column="1" />
+      <File FileName="src\tests\testSnakeMover.cs" Line="15" Column="28" />
+      <File FileName="src\tests\testDirection.cs" Line="33" Column="63" />
+      <File FileName="src\namespaceGraphics\classCellDrawing.cs" Line="22" Column="94" />
+      <File FileName="src\Main.cs" Line="63" Column="28" />
+      <File FileName="src\namespaceGridSystem\classCell.cs" Line="96" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

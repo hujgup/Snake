@@ -8,6 +8,9 @@ namespace SnakeGame.Graphics
 	/// </summary>
 	public static class RenderEvents
 	{
+		/// <summary>
+		/// Fires the LogicTick event.
+		/// </summary>
 		public static void OnLogicTick()
 		{
 			if (LogicTick != null)
@@ -15,6 +18,9 @@ namespace SnakeGame.Graphics
 				LogicTick(null, EventArgs.Empty);
 			}
 		}
+		/// <summary>
+		/// Fires the RenderTick event.
+		/// </summary>
 		public static void OnRenderTick()
 		{
 			if (RenderTick != null)
@@ -22,7 +28,13 @@ namespace SnakeGame.Graphics
 				RenderTick(null, EventArgs.Empty);
 			}
 		}
+		/// <summary>
+		/// Fires when game logic should execute.
+		/// </summary>
 		public static event EventHandler LogicTick;
+		/// <summary>
+		/// Fires when rendering should occur.
+		/// </summary>
 		public static event EventHandler RenderTick;
 	}
 }

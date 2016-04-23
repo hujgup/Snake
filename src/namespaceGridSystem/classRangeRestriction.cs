@@ -8,7 +8,7 @@ namespace SnakeGame.GridSystem
 	public class RangeRestriction<T> : IEquatable<RangeRestriction<T>> where T : IComparable<T>
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Snake.GridSystem.RangeRestriction`1"/> class.
+		/// Initializes a new instance of the <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/> class.
 		/// </summary>
 		/// <param name="lowerBound">The lower bound of this range.</param>
 		/// <param name="upperBound">The upper bound of this range.</param>
@@ -28,7 +28,7 @@ namespace SnakeGame.GridSystem
 			UpperExclusive = upperExclusive;
 		}
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Snake.GridSystem.RangeRestriction`1"/> class.
+		/// Initializes a new instance of the <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/> class.
 		/// </summary>
 		/// <param name="lowerBound">The lower bound of this range.</param>
 		/// <param name="upperBound">The upper bound of this range.</param>
@@ -84,14 +84,14 @@ namespace SnakeGame.GridSystem
 			return res;
 		}
 		/// <summary>
-		/// Returns a <see cref="System.String"/> that represents the current <see cref="Snake.GridSystem.RangeRestriction`1"/>.
+		/// Returns a <see cref="System.String"/> that represents the current <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/>.
 		/// </summary>
 		public override string ToString()
 		{
 			return	string.Format((LowerExclusive ? "(" : "[") + "{0}, {1}" + (UpperExclusive ? ")" : "]"), LowerBound, UpperBound);
 		}
 		/// <summary>
-		/// Serves as a hash function for a <see cref="Snake.GridSystem.RangeRestriction`1"/> object.
+		/// Serves as a hash function for a <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/> object.
 		/// </summary>
 		/// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a hash table.</returns>
 		public override int GetHashCode()
@@ -102,29 +102,33 @@ namespace SnakeGame.GridSystem
 			}
 		}
 		/// <summary>
-		/// Determines whether the specified <see cref="System.Object"/> is equal to the current <see cref="Snake.GridSystem.RangeRestriction`1"/>.
+		/// Determines whether the specified <see cref="System.Object"/> is equal to the current <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/>.
 		/// </summary>
-		/// <param name="obj">The <see cref="System.Object"/> to compare with the current <see cref="Snake.GridSystem.RangeRestriction`1"/>.</param>
+		/// <param name="obj">The <see cref="System.Object"/> to compare with the current <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/>.</param>
 		/// <returns><c>true</c> if the specified <see cref="System.Object"/> is equal to the current
-		/// <see cref="Snake.GridSystem.RangeRestriction`1"/>; otherwise, <c>false</c>.</returns>
+		/// <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/>; otherwise, <c>false</c>.</returns>
 		public override bool Equals(object obj)
 		{
 			return GetType().IsInstanceOfType(obj) ? Equals((RangeRestriction<T>)obj) : false;
 		}
 		/// <summary>
-		/// Determines whether the specified <see cref="Snake.GridSystem.RangeRestriction`1[[`0]]"/> is equal to the current <see cref="Snake.GridSystem.RangeRestriction`1"/>.
+		/// Determines whether the specified <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/> is equal to the current <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/>.
 		/// </summary>
-		/// <param name="other">The <see cref="Snake.GridSystem.RangeRestriction`1[[`0]]"/> to compare with the current <see cref="Snake.GridSystem.RangeRestriction`1"/>.</param>
-		/// <returns><c>true</c> if the specified <see cref="Snake.GridSystem.RangeRestriction`1[[`0]]"/> is equal to the current
-		/// <see cref="Snake.GridSystem.RangeRestriction`1"/>; otherwise, <c>false</c>.</returns>
+		/// <param name="other">The <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/> to compare with the current <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/>.</param>
+		/// <returns><c>true</c> if the specified <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/> is equal to the current
+		/// <see cref="SnakeGame.GridSystem.RangeRestriction{T}"/>; otherwise, <c>false</c>.</returns>
 		public bool Equals(RangeRestriction<T> other)
 		{
 			return LowerBound.CompareTo(other.LowerBound) == 0 && UpperBound.CompareTo(other.UpperBound) == 0 && LowerExclusive == other.LowerExclusive && UpperExclusive == other.UpperExclusive;
 		}
+		/// <param name="a">First arg.</param>
+		/// <param name="b">Second arg.</param>
 		public static bool operator ==(RangeRestriction<T> a, RangeRestriction<T> b)
 		{
 			return a.Equals(b);
 		}
+		/// <param name="a">First arg.</param>
+		/// <param name="b">Second arg.</param>
 		public static bool operator !=(RangeRestriction<T> a, RangeRestriction<T> b)
 		{
 			return !(a == b);

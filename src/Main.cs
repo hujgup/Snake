@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using SnakeGame.Graphics;
 using SnakeGame.GridSystem;
 using SwinGameSDK;
 
-namespace SnakeGame.Graphics
+namespace SnakeGame
 {
-	// TODO: Just dumping all the graphics and control stuff in here for now to get *something* working - better solution later.
-	public static class CellDrawing
-	{
-		private static readonly Color _CELL_COLOR = SwinGame.RGBColor(196, 196, 196);
-		public static void Draw(int xOffset, int yOffset, int size, Grid.Cell c)
-		{
-			SwinGame.FillRectangle(_CELL_COLOR, xOffset + c.X*size, yOffset + c.Y*size, size, size);
-		}
-	}
+	/// <summary>
+	/// Main class.
+	/// </summary>
 	public static class MainClass
 	{
+		// TODO: Just dumping all the rendering and control stuff in here for now to get *something* working - better solution later.
+		/// <summary>
+		/// The entry point of the program, where the program control starts and ends.
+		/// </summary>
+		/// <param name="args">The command-line arguments.</param>
 		public static void Main(string[] args)
 		{
 			Grid playArea = new Grid(32, 32);
@@ -43,23 +43,24 @@ namespace SnakeGame.Graphics
 			};
 			RenderEvents.RenderTick += (object sender, EventArgs e) =>
 			{
+				int offset = 1;
 				int x;
 				int y;
 				for (y = -1, x = -1; x <= playArea.Width; x++)
 				{
-					CellDrawing.Draw(8, 8, 8, new Grid.Cell(playArea, x, y));
-					CellDrawing.Draw(8, 8, 8, new Grid.Cell(playArea, x, playArea.Height));
+					CellDrawing.Draw(offset, offset, new Cell(playArea, x, y));
+					CellDrawing.Draw(offset, offset, new Cell(playArea, x, playArea.Height));
 				}
 				for (y = 0, x = -1; y < playArea.Height; y++)
 				{
-					CellDrawing.Draw(8, 8, 8, new Grid.Cell(playArea, x, y));
-					CellDrawing.Draw(8, 8, 8, new Grid.Cell(playArea, playArea.Width, y));
+					CellDrawing.Draw(offset, offset, new Cell(playArea, x, y));
+					CellDrawing.Draw(offset, offset, new Cell(playArea, playArea.Width, y));
 				}
 				foreach (MovementNode node in snake)
 				{
-					CellDrawing.Draw(8, 8, 8, node.Cell);
+					CellDrawing.Draw(offset, offset, node.Cell);
 				}
-				CellDrawing.Draw(8, 8, 8, objective.OccupiedCell);
+				CellDrawing.Draw(offset, offset, objective.OccupiedCell);
 			};
 
 			SwinGame.OpenGraphicsWindow("Snake", 272, 272);

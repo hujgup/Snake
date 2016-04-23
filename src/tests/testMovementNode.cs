@@ -4,15 +4,21 @@ using NUnit.Framework;
 
 namespace SnakeGame
 {
+	/// <summary>
+	/// Provides unit tests for the MovementNode class.
+	/// </summary>
 	[TestFixture()]
 	public class TestMovementNode
 	{
-		private void TestCtor(Grid.Cell c, Direction dir)
+		private void TestCtor(Cell c, Direction dir)
 		{
 			MovementNode m = new MovementNode(c, dir);
 			Assert.AreEqual(c, m.Cell);
 			Assert.AreEqual(dir, m.MovementDirection);
 		}
+		/// <summary>
+		/// Tests MovementNode construction.
+		/// </summary>
 		[Test()]
 		public void Construction()
 		{

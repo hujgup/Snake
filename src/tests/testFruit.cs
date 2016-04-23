@@ -5,10 +5,13 @@ using NUnit.Framework;
 
 namespace SnakeGame
 {
+	/// <summary>
+	/// Provides unit tests for the Fruit class.
+	/// </summary>
 	[TestFixture()]
 	public class TestFruit
 	{
-		private void TestConstruction(Grid g, Grid.Cell loc, int value)
+		private void TestConstruction(Grid g, Cell loc, int value)
 		{
 			Fruit f = new Fruit(g, loc, value);
 			Assert.AreEqual(g, f.PlayArea);
@@ -24,6 +27,9 @@ namespace SnakeGame
 			Assert.IsTrue(g.IsDefined(f.OccupiedCell));
 			Assert.IsTrue(f.OccupiedCell.IsValid);
 		}
+		/// <summary>
+		/// Tests fruit construction.
+		/// </summary>
 		[Test()]
 		public void Construction()
 		{
@@ -39,7 +45,7 @@ namespace SnakeGame
 			});
 			Assert.Throws<ArgumentException>(delegate()
 			{
-				Fruit f = new Fruit(g, Grid.Cell.INVALID_CELL, 1);
+				Fruit f = new Fruit(g, Cell.INVALID_CELL, 1);
 			});
 			Assert.Throws<ArgumentException>(delegate()
 			{
@@ -47,9 +53,12 @@ namespace SnakeGame
 			});
 			Assert.Throws<ArgumentOutOfRangeException>(delegate()
 			{
-				Fruit f = new Fruit(g, new Grid.Cell(g, 128, 128), 7);
+				Fruit f = new Fruit(g, new Cell(g, 128, 128), 7);
 			});
 		}
+		/// <summary>
+		/// Tests fruit constructor overloads.
+		/// </summary>
 		[Test()]
 		public void Overloads()
 		{
@@ -59,15 +68,18 @@ namespace SnakeGame
 			Assert.IsTrue(g.IsDefined(f.OccupiedCell));
 
 		}
+		/// <summary>
+		/// Tests fruit location randomization.
+		/// </summary>
 		[Test()]
 		public void Randomization()
 		{
 			Grid g = new Grid(8, 8);
 			Fruit f = new Fruit(g, g[5, 7], 4);
 			int max = 65536;
-			Dictionary<Grid.Cell, int> cells = new Dictionary<Grid.Cell, int>(max);
+			Dictionary<Cell, int> cells = new Dictionary<Cell, int>(max);
 			{
-				Grid.Cell c;
+				Cell c;
 				for (int i = 0; i < max; i++)
 				{
 					f.RandomizeLocation();
@@ -84,7 +96,7 @@ namespace SnakeGame
 				int expected = 1024;
 				int errorMargin = 256;
 				int value;
-				foreach (KeyValuePair<Grid.Cell, int> kvp in cells)
+				foreach (KeyValuePair<Cell, int> kvp in cells)
 				{
 					value = Math.Abs(kvp.Value - expected);
 					if (value > errorMargin)
@@ -94,7 +106,7 @@ namespace SnakeGame
 				}
 			}
 			cells.Clear();
-			List<Grid.Cell> exclude = new List<Grid.Cell>(16);
+			List<Cell> exclude = new List<Cell>(16);
 			exclude.Add(g[0, 10]);
 			exclude.Add(g[6, 2]);
 			exclude.Add(g[0, 5]);
@@ -112,15 +124,15 @@ namespace SnakeGame
 			exclude.Add(g[1, 0]);
 			exclude.Add(g[2, 0]);
 			{
-				Grid.Cell c;
+				Cell c;
 				for (int i = 0; i < max; i++)
 				{
 					f.RandomizeLocation(exclude);
 					c = f.OccupiedCell;
 					if (exclude.Contains(c))
 					{
-						string fail = "Fruit.RandomizeLocation(List<Grid.Cell>) not excluding specified cells: Expected any cell except those in the set {";
-						foreach (Grid.Cell eCell in exclude)
+						string fail = "Fruit.RandomizeLocation(List<Cell>) not excluding specified cells: Expected any cell except those in the set {";
+						foreach (Cell eCell in exclude)
 						{
 							fail += eCell.ToString() + ", ";
 						}
@@ -139,18 +151,18 @@ namespace SnakeGame
 				int expected = 1365;
 				int errorMargin = 341;
 				int value;
-				foreach (KeyValuePair<Grid.Cell, int> kvp in cells)
+				foreach (KeyValuePair<Cell, int> kvp in cells)
 				{
 					value = Math.Abs(kvp.Value - expected);
 					if (value > errorMargin)
 					{
-						Assert.Fail("Fruit.RandomizeLocation(List<Grid.Cell>) randomization not random enough: Expected a value within " + errorMargin.ToString() + " of " + expected.ToString() + ", but was " + value.ToString() + " away (value = " + kvp.Value.ToString() + "). Note that this check may fail due to random chance - try running the tests again.");
+						Assert.Fail("Fruit.RandomizeLocation(List<Cell>) randomization not random enough: Expected a value within " + errorMargin.ToString() + " of " + expected.ToString() + ", but was " + value.ToString() + " away (value = " + kvp.Value.ToString() + "). Note that this check may fail due to random chance - try running the tests again.");
 					}
 				}
 			}
 			cells.Clear();
 			{
-				Grid.Cell c;
+				Cell c;
 				for (int i = 0; i < max; i++)
 				{
 					f = new Fruit(g, 1);
@@ -167,7 +179,7 @@ namespace SnakeGame
 				int expected = 1024;
 				int errorMargin = 256;
 				int value;
-				foreach (KeyValuePair<Grid.Cell, int> kvp in cells)
+				foreach (KeyValuePair<Cell, int> kvp in cells)
 				{
 					value = Math.Abs(kvp.Value - expected);
 					if (value > errorMargin)
@@ -178,15 +190,15 @@ namespace SnakeGame
 			}
 			cells.Clear();
 			{
-				Grid.Cell c;
+				Cell c;
 				for (int i = 0; i < max; i++)
 				{
 					f = new Fruit(g, exclude, 1);
 					c = f.OccupiedCell;
 					if (exclude.Contains(c))
 					{
-						string fail = "Fruit.Constructor(Grid, List<Grid.Cell>, int) not excluding specified cells: Expected any cell except those in the set {";
-						foreach (Grid.Cell eCell in exclude)
+						string fail = "Fruit.Constructor(Grid, List<Cell>, int) not excluding specified cells: Expected any cell except those in the set {";
+						foreach (Cell eCell in exclude)
 						{
 							fail += eCell.ToString() + ", ";
 						}
@@ -205,12 +217,12 @@ namespace SnakeGame
 				int expected = 1365;
 				int errorMargin = 341;
 				int value;
-				foreach (KeyValuePair<Grid.Cell, int> kvp in cells)
+				foreach (KeyValuePair<Cell, int> kvp in cells)
 				{
 					value = Math.Abs(kvp.Value - expected);
 					if (value > errorMargin)
 					{
-						Assert.Fail("Fruit.Constructor(Grid, List<Grid.Cell>, int) randomization not random enough: Expected a value within " + errorMargin.ToString() + " of " + expected.ToString() + ", but was " + value.ToString() + " away (value = " + kvp.Value.ToString() + "). Note that this check may fail due to random chance - try running the tests again.");
+						Assert.Fail("Fruit.Constructor(Grid, List<Cell>, int) randomization not random enough: Expected a value within " + errorMargin.ToString() + " of " + expected.ToString() + ", but was " + value.ToString() + " away (value = " + kvp.Value.ToString() + "). Note that this check may fail due to random chance - try running the tests again.");
 					}
 				}
 			}

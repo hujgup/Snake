@@ -21,13 +21,13 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>bin\Release\Snake.xml</DocumentationFile>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -51,6 +51,11 @@
     <Compile Include="src\tests\testSnake.cs" />
     <Compile Include="src\namespaceGraphics\classRenderEvents.cs" />
     <Compile Include="src\classSnakeMover.cs" />
+    <Compile Include="src\tests\testSnakeMover.cs" />
+    <Compile Include="src\tests\testDirection.cs" />
+    <Compile Include="src\namespaceGraphics\classCellDrawing.cs" />
+    <Compile Include="src\namespaceGridSystem\classCell.cs" />
+    <Compile Include="src\namespaceGridSystem\tests\testCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
