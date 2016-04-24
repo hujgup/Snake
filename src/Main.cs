@@ -22,7 +22,7 @@ namespace SnakeGame
 			Snake snake = new Snake(playArea, playArea[16, 16], 5, Direction.Right);
 			Fruit objective = new Fruit(playArea, snake.OccupiedCells, 1);
 
-			ControlsFlag up = new ControlsFlag(delegate()
+			BooleanControlsFlag up = new BooleanControlsFlag(delegate()
 			{
 				return SwinGame.KeyDown(KeyCode.vk_w) || SwinGame.KeyDown(KeyCode.vk_UP);
 			});
@@ -30,7 +30,7 @@ namespace SnakeGame
 			{
 				snake.MovementDirection = Direction.Up;
 			};
-			ControlsFlag left = new ControlsFlag(delegate()
+			BooleanControlsFlag left = new BooleanControlsFlag(delegate()
 			{
 				return SwinGame.KeyDown(KeyCode.vk_a) || SwinGame.KeyDown(KeyCode.vk_LEFT);
 			});
@@ -38,7 +38,7 @@ namespace SnakeGame
 			{
 				snake.MovementDirection = Direction.Left;
 			};
-			ControlsFlag down = new ControlsFlag(delegate()
+			BooleanControlsFlag down = new BooleanControlsFlag(delegate()
 			{
 				return SwinGame.KeyDown(KeyCode.vk_s) || SwinGame.KeyDown(KeyCode.vk_DOWN);
 			});
@@ -46,7 +46,7 @@ namespace SnakeGame
 			{
 				snake.MovementDirection = Direction.Down;
 			};
-			ControlsFlag right = new ControlsFlag(delegate()
+			BooleanControlsFlag right = new BooleanControlsFlag(delegate()
 			{
 				return SwinGame.KeyDown(KeyCode.vk_d) || SwinGame.KeyDown(KeyCode.vk_RIGHT);
 			});

@@ -1,14 +1,17 @@
 ﻿<Properties StartupItem="Snake.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\namespaceUserInterface\classRenderEvents.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\Main.cs">
     <Files>
       <File FileName="src\classSnakeMover.cs" Line="23" Column="1" />
-      <File FileName="src\namespaceUserInterface\classCellDrawing.cs" Line="17" Column="39" />
+      <File FileName="src\namespaceUserInterface\classCellDrawing.cs" Line="9" Column="16" />
       <File FileName="src\namespaceUserInterface\classRenderEvents.cs" Line="33" Column="5" />
-      <File FileName="src\namespaceUserInterface\classControlsFlag.cs" Line="29" Column="4" />
-      <File FileName="src\Main.cs" Line="50" Column="4" />
-      <File FileName="src\namespaceUserInterface\classFlag.cs" Line="82" Column="26" />
-      <File FileName="src\namespaceUserInterface\tests\testControlsFlag.cs" Line="9" Column="16" />
+      <File FileName="src\namespaceUserInterface\classControlsFlag.cs" Line="33" Column="1" />
+      <File FileName="src\Main.cs" Line="55" Column="47" />
+      <File FileName="src\namespaceUserInterface\classFlag.cs" Line="15" Column="1" />
+      <File FileName="src\namespaceUserInterface\tests\testBooleanControlsFlag.cs" Line="92" Column="22" />
+      <File FileName="src\namespaceUserInterface\classBooleanFlag.cs" Line="13" Column="82" />
+      <File FileName="src\namespaceUserInterface\classBooleanControlsFlag.cs" Line="6" Column="6" />
+      <File FileName="src\namespaceUserInterface\tests\testControlsFlag.cs" Line="40" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

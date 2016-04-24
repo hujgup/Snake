@@ -19,6 +19,7 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
+    <DocumentationFile>bin\Debug\Snake.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <Optimize>true</Optimize>
@@ -58,6 +59,9 @@
     <Compile Include="src\namespaceUserInterface\classCellDrawing.cs" />
     <Compile Include="src\namespaceUserInterface\classControlsFlag.cs" />
     <Compile Include="src\namespaceUserInterface\classFlag.cs" />
+    <Compile Include="src\namespaceUserInterface\classBooleanFlag.cs" />
+    <Compile Include="src\namespaceUserInterface\classBooleanControlsFlag.cs" />
+    <Compile Include="src\namespaceUserInterface\tests\testBooleanControlsFlag.cs" />
     <Compile Include="src\namespaceUserInterface\tests\testControlsFlag.cs" />
   </ItemGroup>
   <ItemGroup>
