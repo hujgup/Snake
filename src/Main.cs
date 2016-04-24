@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using SnakeGame.Graphics;
 using SnakeGame.GridSystem;
+using SnakeGame.UserInterface;
 using SwinGameSDK;
 
 namespace SnakeGame
@@ -22,25 +22,39 @@ namespace SnakeGame
 			Snake snake = new Snake(playArea, playArea[16, 16], 5, Direction.Right);
 			Fruit objective = new Fruit(playArea, snake.OccupiedCells, 1);
 
-			RenderEvents.LogicTick += (object sender, EventArgs e) =>
+			ControlsFlag up = new ControlsFlag(delegate()
 			{
-				if (SwinGame.KeyDown(KeyCode.vk_w))
-				{
-					snake.MovementDirection = Direction.Up;
-				}
-				else if (SwinGame.KeyDown(KeyCode.vk_a))
-				{
-					snake.MovementDirection = Direction.Left;
-				}
-				else if (SwinGame.KeyDown(KeyCode.vk_s))
-				{
-					snake.MovementDirection = Direction.Down;
-				}
-				else if (SwinGame.KeyDown(KeyCode.vk_d))
-				{
-					snake.MovementDirection = Direction.Right;
-				}
+				return SwinGame.KeyDown(KeyCode.vk_w) || SwinGame.KeyDown(KeyCode.vk_UP);
+			});
+			up.StateSetTrue += (object sender, EventArgs e) =>
+			{
+				snake.MovementDirection = Direction.Up;
 			};
+			ControlsFlag left = new ControlsFlag(delegate()
+			{
+				return SwinGame.KeyDown(KeyCode.vk_a) || SwinGame.KeyDown(KeyCode.vk_LEFT);
+			});
+			left.StateSetTrue += (object sender, EventArgs e) =>
+			{
+				snake.MovementDirection = Direction.Left;
+			};
+			ControlsFlag down = new ControlsFlag(delegate()
+			{
+				return SwinGame.KeyDown(KeyCode.vk_s) || SwinGame.KeyDown(KeyCode.vk_DOWN);
+			});
+			down.StateSetTrue += (object sender, EventArgs e) =>
+			{
+				snake.MovementDirection = Direction.Down;
+			};
+			ControlsFlag right = new ControlsFlag(delegate()
+			{
+				return SwinGame.KeyDown(KeyCode.vk_d) || SwinGame.KeyDown(KeyCode.vk_RIGHT);
+			});
+			right.StateSetTrue += (object sender, EventArgs e) =>
+			{
+				snake.MovementDirection = Direction.Right;
+			};
+
 			RenderEvents.RenderTick += (object sender, EventArgs e) =>
 			{
 				int offset = 1;

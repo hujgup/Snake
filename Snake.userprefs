@@ -1,22 +1,14 @@
 ﻿<Properties StartupItem="Snake.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\namespaceGridSystem\classCell.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\namespaceUserInterface\classRenderEvents.cs">
     <Files>
-      <File FileName="src\namespaceGridSystem\tests\testCell.cs" Line="7" Column="45" />
-      <File FileName="src\namespaceGridSystem\tests\testGrid.cs" Line="8" Column="44" />
-      <File FileName="src\namespaceGridSystem\classGrid.cs" Line="49" Column="48" />
-      <File FileName="src\classSnake.cs" Line="23" Column="79" />
-      <File FileName="src\namespaceGridSystem\classRangeRestriction.cs" Line="132" Column="1" />
-      <File FileName="src\tests\testFruit.cs" Line="72" Column="42" />
-      <File FileName="src\tests\testMovementNode.cs" Line="20" Column="39" />
-      <File FileName="src\tests\testSnake.cs" Line="218" Column="34" />
-      <File FileName="src\namespaceGraphics\classRenderEvents.cs" Line="38" Column="36" />
-      <File FileName="src\classSnakeMover.cs" Line="43" Column="1" />
-      <File FileName="src\tests\testSnakeMover.cs" Line="15" Column="28" />
-      <File FileName="src\tests\testDirection.cs" Line="33" Column="63" />
-      <File FileName="src\namespaceGraphics\classCellDrawing.cs" Line="22" Column="94" />
-      <File FileName="src\Main.cs" Line="63" Column="28" />
-      <File FileName="src\namespaceGridSystem\classCell.cs" Line="96" Column="4" />
+      <File FileName="src\classSnakeMover.cs" Line="23" Column="1" />
+      <File FileName="src\namespaceUserInterface\classCellDrawing.cs" Line="17" Column="39" />
+      <File FileName="src\namespaceUserInterface\classRenderEvents.cs" Line="33" Column="5" />
+      <File FileName="src\namespaceUserInterface\classControlsFlag.cs" Line="29" Column="4" />
+      <File FileName="src\Main.cs" Line="50" Column="4" />
+      <File FileName="src\namespaceUserInterface\classFlag.cs" Line="82" Column="26" />
+      <File FileName="src\namespaceUserInterface\tests\testControlsFlag.cs" Line="9" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -49,20 +49,24 @@
     <Compile Include="src\tests\testFruit.cs" />
     <Compile Include="src\tests\testMovementNode.cs" />
     <Compile Include="src\tests\testSnake.cs" />
-    <Compile Include="src\namespaceGraphics\classRenderEvents.cs" />
     <Compile Include="src\classSnakeMover.cs" />
     <Compile Include="src\tests\testSnakeMover.cs" />
     <Compile Include="src\tests\testDirection.cs" />
-    <Compile Include="src\namespaceGraphics\classCellDrawing.cs" />
     <Compile Include="src\namespaceGridSystem\classCell.cs" />
     <Compile Include="src\namespaceGridSystem\tests\testCell.cs" />
+    <Compile Include="src\namespaceUserInterface\classRenderEvents.cs" />
+    <Compile Include="src\namespaceUserInterface\classCellDrawing.cs" />
+    <Compile Include="src\namespaceUserInterface\classControlsFlag.cs" />
+    <Compile Include="src\namespaceUserInterface\classFlag.cs" />
+    <Compile Include="src\namespaceUserInterface\tests\testControlsFlag.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="src\" />
     <Folder Include="src\tests\" />
     <Folder Include="src\namespaceGridSystem\tests\" />
-    <Folder Include="src\namespaceGraphics\" />
+    <Folder Include="src\namespaceUserInterface\" />
+    <Folder Include="src\namespaceUserInterface\tests\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\xml\highscores.xsd">
@@ -163,6 +167,18 @@
     </Reference>
     <Reference Include="SwinGame">
       <HintPath>lib\SwinGame.dll</HintPath>
+    </Reference>
+    <Reference Include="Gallio">
+      <HintPath>packages\mbunit.3.4.14.0\lib\net40\Gallio.dll</HintPath>
+    </Reference>
+    <Reference Include="Gallio40">
+      <HintPath>packages\mbunit.3.4.14.0\lib\net40\Gallio40.dll</HintPath>
+    </Reference>
+    <Reference Include="MbUnit">
+      <HintPath>packages\mbunit.3.4.14.0\lib\net40\MbUnit.dll</HintPath>
+    </Reference>
+    <Reference Include="MbUnit40">
+      <HintPath>packages\mbunit.3.4.14.0\lib\net40\MbUnit40.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ProjectExtensions>

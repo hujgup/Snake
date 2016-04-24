@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Timers;
+using System.Collections.Generic;
+using KeyCode = SwinGameSDK.KeyCode;
 
 namespace SnakeGame
 {
