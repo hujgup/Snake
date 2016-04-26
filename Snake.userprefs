@@ -1,17 +1,19 @@
 ﻿<Properties StartupItem="Snake.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\namespaceUserInterface\tests\testSnakeMovementControlHandler.cs">
     <Files>
-      <File FileName="src\classSnakeMover.cs" Line="23" Column="1" />
-      <File FileName="src\namespaceUserInterface\classCellDrawing.cs" Line="9" Column="16" />
-      <File FileName="src\namespaceUserInterface\classRenderEvents.cs" Line="33" Column="5" />
-      <File FileName="src\namespaceUserInterface\classControlsFlag.cs" Line="33" Column="1" />
-      <File FileName="src\Main.cs" Line="55" Column="47" />
-      <File FileName="src\namespaceUserInterface\classFlag.cs" Line="15" Column="1" />
-      <File FileName="src\namespaceUserInterface\tests\testBooleanControlsFlag.cs" Line="92" Column="22" />
+      <File FileName="src\namespaceUserInterface\classCellDrawing.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceUserInterface\classRenderEvents.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceUserInterface\classControlsFlag.cs" Line="1" Column="1" />
+      <File FileName="src\Main.cs" Line="27" Column="1" />
+      <File FileName="src\namespaceUserInterface\classFlag.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceUserInterface\tests\testBooleanControlsFlag.cs" Line="1" Column="1" />
       <File FileName="src\namespaceUserInterface\classBooleanFlag.cs" Line="13" Column="82" />
-      <File FileName="src\namespaceUserInterface\classBooleanControlsFlag.cs" Line="6" Column="6" />
-      <File FileName="src\namespaceUserInterface\tests\testControlsFlag.cs" Line="40" Column="15" />
+      <File FileName="src\namespaceUserInterface\classBooleanControlsFlag.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceUserInterface\tests\testControlsFlag.cs" Line="24" Column="72" />
+      <File FileName="src\classSnakeMover.cs" Line="54" Column="9" />
+      <File FileName="src\namespaceUserInterface\classSnakeMovementControlHandler.cs" Line="46" Column="1" />
+      <File FileName="src\namespaceUserInterface\tests\testSnakeMovementControlHandler.cs" Line="58" Column="139" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

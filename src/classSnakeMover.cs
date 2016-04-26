@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Timers;
-using System.Collections.Generic;
 using KeyCode = SwinGameSDK.KeyCode;
 
 namespace SnakeGame
@@ -23,9 +22,27 @@ namespace SnakeGame
 			_timer = new Timer(1000d/updatesPerSecond);
 			_timer.Elapsed += (object sender, ElapsedEventArgs e) =>
 			{
+				if (BeforeMove != null)
+				{
+					BeforeMove(this, EventArgs.Empty);
+				}
 				_snake.Move();
+				if (AfterMove != null)
+				{
+					AfterMove(this, EventArgs.Empty);
+				}
 			};
 			_timer.Start();
+		}
+		/// <summary>
+		/// Gets the Snake that this instance moves.
+		/// </summary>
+		public Snake Target
+		{
+			get
+			{
+				return _snake;
+			}
 		}
 		/// <summary>
 		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -39,6 +56,14 @@ namespace SnakeGame
 			_timer.Stop();
 			_timer.Dispose();
 		}
+		/// <summary>
+		/// Fires just before the snake is moved.
+		/// </summary>
+		public event EventHandler BeforeMove;
+		/// <summary>
+		/// Fires just after the snake is moved.
+		/// </summary>
+		public event EventHandler AfterMove;
 	}
 }
 

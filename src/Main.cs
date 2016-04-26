@@ -18,9 +18,12 @@ namespace SnakeGame
 		/// <param name="args">The command-line arguments.</param>
 		public static void Main(string[] args)
 		{
+			SwinGame.OpenGraphicsWindow("Snake", 272, 272);
+			Color background = SwinGame.RGBColor(32, 32, 32);
 			Grid playArea = new Grid(32, 32);
 			Snake snake = new Snake(playArea, playArea[16, 16], 5, Direction.Right);
 			Fruit objective = new Fruit(playArea, snake.OccupiedCells, 1);
+			SnakeMovementControlHandler mover = new SnakeMovementControlHandler(snake, 5d);
 
 			BooleanControlsFlag up = new BooleanControlsFlag(delegate()
 			{
@@ -28,7 +31,7 @@ namespace SnakeGame
 			});
 			up.StateSetTrue += (object sender, EventArgs e) =>
 			{
-				snake.MovementDirection = Direction.Up;
+				mover.Enqueue(Direction.Up);
 			};
 			BooleanControlsFlag left = new BooleanControlsFlag(delegate()
 			{
@@ -36,7 +39,7 @@ namespace SnakeGame
 			});
 			left.StateSetTrue += (object sender, EventArgs e) =>
 			{
-				snake.MovementDirection = Direction.Left;
+				mover.Enqueue(snake.MovementDirection = Direction.Left);
 			};
 			BooleanControlsFlag down = new BooleanControlsFlag(delegate()
 			{
@@ -44,7 +47,7 @@ namespace SnakeGame
 			});
 			down.StateSetTrue += (object sender, EventArgs e) =>
 			{
-				snake.MovementDirection = Direction.Down;
+				mover.Enqueue(snake.MovementDirection = Direction.Down);
 			};
 			BooleanControlsFlag right = new BooleanControlsFlag(delegate()
 			{
@@ -52,7 +55,7 @@ namespace SnakeGame
 			});
 			right.StateSetTrue += (object sender, EventArgs e) =>
 			{
-				snake.MovementDirection = Direction.Right;
+				mover.Enqueue(snake.MovementDirection = Direction.Right);
 			};
 
 			RenderEvents.RenderTick += (object sender, EventArgs e) =>
@@ -77,9 +80,6 @@ namespace SnakeGame
 				CellDrawing.Draw(offset, offset, objective.OccupiedCell);
 			};
 
-			SwinGame.OpenGraphicsWindow("Snake", 272, 272);
-			Color background = SwinGame.RGBColor(32, 32, 32);
-			SnakeMover mover = new SnakeMover(snake, 5d);
 			while (!SwinGame.WindowCloseRequested())
 			{
 				SwinGame.ProcessEvents();

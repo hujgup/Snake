@@ -63,6 +63,8 @@
     <Compile Include="src\namespaceUserInterface\classBooleanControlsFlag.cs" />
     <Compile Include="src\namespaceUserInterface\tests\testBooleanControlsFlag.cs" />
     <Compile Include="src\namespaceUserInterface\tests\testControlsFlag.cs" />
+    <Compile Include="src\namespaceUserInterface\tests\testSnakeMovementControlHandler.cs" />
+    <Compile Include="src\namespaceUserInterface\classSnakeMovementControlHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

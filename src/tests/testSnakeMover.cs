@@ -12,6 +12,17 @@ namespace SnakeGame
 	public class TestSnakeMover
 	{
 		/// <summary>
+		/// Tests that the Target property exists and is set properly.
+		/// </summary>
+		[Test()]
+		public void TargetExists()
+		{
+			Grid g = new Grid(16, 16);
+			Snake s = new Snake(g, g[8, 8], 2, Direction.Right);
+			SnakeMover sm = new SnakeMover(s, 4);
+			Assert.AreEqual(s, sm.Target, "SnakeMover.Target should correspond to the first constructor parameter.");
+		}
+		/// <summary>
 		/// Tests ticking motion.
 		/// </summary>
 		[Test()]
