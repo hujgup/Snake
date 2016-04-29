@@ -24,6 +24,11 @@ namespace SnakeGame
 			Snake snake = new Snake(playArea, playArea[16, 16], 5, Direction.Right);
 			Fruit objective = new Fruit(playArea, snake.OccupiedCells, 1);
 			SnakeMovementControlHandler mover = new SnakeMovementControlHandler(snake, 5d);
+			bool keepOpen = true;
+			mover.OutOfBounds += (object sender, EventArgs e) =>
+			{
+				keepOpen = false;
+			};
 
 			BooleanControlsFlag up = new BooleanControlsFlag(delegate()
 			{
@@ -80,7 +85,7 @@ namespace SnakeGame
 				CellDrawing.Draw(offset, offset, objective.OccupiedCell);
 			};
 
-			while (!SwinGame.WindowCloseRequested())
+			while (keepOpen && !SwinGame.WindowCloseRequested())
 			{
 				SwinGame.ProcessEvents();
 				RenderEvents.OnLogicTick();

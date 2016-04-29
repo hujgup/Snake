@@ -27,6 +27,13 @@ namespace SnakeGame
 					BeforeMove(this, EventArgs.Empty);
 				}
 				_snake.Move();
+				if (_snake.OutOfBounds)
+				{
+					_timer.Stop();
+					if (OutOfBounds != null) {
+						OutOfBounds(this, EventArgs.Empty);
+					}
+				}
 				if (AfterMove != null)
 				{
 					AfterMove(this, EventArgs.Empty);
@@ -64,6 +71,10 @@ namespace SnakeGame
 		/// Fires just after the snake is moved.
 		/// </summary>
 		public event EventHandler AfterMove;
+		/// <summary>
+		/// Fires when the snake moves out of bounds.
+		/// </summary>
+		public event EventHandler OutOfBounds;
 	}
 }
 
