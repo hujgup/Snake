@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using SnakeGame.GridSystem;
 using NUnit.Framework;
 
-namespace SnakeGame
+namespace SnakeGame.Model
 {
 	/// <summary>
 	/// Provides unit tests for the Fruit class.

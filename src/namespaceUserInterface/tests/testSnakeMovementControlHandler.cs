@@ -1,4 +1,5 @@
 ﻿using System;
+using SnakeGame.Model;
 using SnakeGame.GridSystem;
 using NUnit.Framework;
 

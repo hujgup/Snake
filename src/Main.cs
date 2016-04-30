@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SnakeGame.Model;
 using SnakeGame.GridSystem;
 using SnakeGame.UserInterface;
 using SwinGameSDK;

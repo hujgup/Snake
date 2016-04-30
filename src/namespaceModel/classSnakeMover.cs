@@ -2,7 +2,7 @@
 using System.Timers;
 using KeyCode = SwinGameSDK.KeyCode;
 
-namespace SnakeGame
+namespace SnakeGame.Model
 {
 	/// <summary>
 	/// Class for periodically moving a Snake.

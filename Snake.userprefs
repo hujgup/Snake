@@ -1,19 +1,28 @@
 ﻿<Properties StartupItem="Snake.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\namespaceUserInterface\tests\testSnakeMovementControlHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\namespaceModel\enumDirection.cs">
     <Files>
       <File FileName="src\namespaceUserInterface\classCellDrawing.cs" Line="1" Column="1" />
       <File FileName="src\namespaceUserInterface\classRenderEvents.cs" Line="1" Column="1" />
       <File FileName="src\namespaceUserInterface\classControlsFlag.cs" Line="1" Column="1" />
-      <File FileName="src\Main.cs" Line="27" Column="1" />
+      <File FileName="src\Main.cs" Line="7" Column="1" />
       <File FileName="src\namespaceUserInterface\classFlag.cs" Line="1" Column="1" />
       <File FileName="src\namespaceUserInterface\tests\testBooleanControlsFlag.cs" Line="1" Column="1" />
-      <File FileName="src\namespaceUserInterface\classBooleanFlag.cs" Line="13" Column="82" />
+      <File FileName="src\namespaceUserInterface\classBooleanFlag.cs" Line="1" Column="1" />
       <File FileName="src\namespaceUserInterface\classBooleanControlsFlag.cs" Line="1" Column="1" />
-      <File FileName="src\namespaceUserInterface\tests\testControlsFlag.cs" Line="24" Column="72" />
-      <File FileName="src\classSnakeMover.cs" Line="54" Column="9" />
-      <File FileName="src\namespaceUserInterface\classSnakeMovementControlHandler.cs" Line="46" Column="1" />
-      <File FileName="src\namespaceUserInterface\tests\testSnakeMovementControlHandler.cs" Line="58" Column="139" />
+      <File FileName="src\namespaceUserInterface\tests\testControlsFlag.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceUserInterface\classSnakeMovementControlHandler.cs" Line="4" Column="1" />
+      <File FileName="src\namespaceUserInterface\tests\testSnakeMovementControlHandler.cs" Line="3" Column="1" />
+      <File FileName="src\namespaceModel\classFruit.cs" Line="5" Column="26" />
+      <File FileName="src\namespaceModel\classMovementNode.cs" Line="4" Column="26" />
+      <File FileName="src\namespaceModel\classSnake.cs" Line="4" Column="38" />
+      <File FileName="src\namespaceModel\classSnakeMover.cs" Line="6" Column="1" />
+      <File FileName="src\namespaceModel\enumDirection.cs" Line="120" Column="10" />
+      <File FileName="src\namespaceModel\tests\testDirection.cs" Line="26" Column="25" />
+      <File FileName="src\namespaceModel\tests\testFruit.cs" Line="6" Column="26" />
+      <File FileName="src\namespaceModel\tests\testMovementNode.cs" Line="23" Column="29" />
+      <File FileName="src\namespaceModel\tests\testSnake.cs" Line="29" Column="9" />
+      <File FileName="src\namespaceModel\tests\testSnakeMover.cs" Line="15" Column="65" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
