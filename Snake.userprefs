@@ -1,12 +1,13 @@
 ﻿<Properties StartupItem="Snake.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\namespaceUserInterface\classBooleanFlag.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\Main.cs">
     <Files>
-      <File FileName="src\Main.cs" Line="38" Column="2" />
-      <File FileName="src\namespaceUserInterface\classBooleanControlsFlag.cs" Line="1" Column="1" />
-      <File FileName="src\namespaceUserInterface\classBooleanFlag.cs" Line="33" Column="32" />
-      <File FileName="src\namespaceUserInterface\classFlag.cs" Line="1" Column="1" />
-      <File FileName="src\namespaceUserInterface\tests\testBooleanControlsFlag.cs" Line="44" Column="4" />
+      <File FileName="src\Main.cs" Line="23" Column="1" />
+      <File FileName="e:\Halo\Coding\DP1\Snake\src\namespaceUserInterface\classSnakeMovementControlHandler.cs" Line="1" Column="1" />
+      <File FileName="src\classGameplayController.cs" Line="57" Column="80" />
+      <File FileName="src\namespaceModel\classSnake.cs" Line="88" Column="16" />
+      <File FileName="src\namespaceGridSystem\classCell.cs" Line="1" Column="1" />
+      <File FileName="src\classMetaController.cs" Line="37" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

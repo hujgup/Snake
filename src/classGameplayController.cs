@@ -30,7 +30,7 @@ namespace SnakeGame
 
 			_up = new BooleanControlsFlag(delegate()
 			{
-				return _player.MovementDirection.Invert != Direction.Up && (SwinGame.KeyDown(KeyCode.vk_w) || SwinGame.KeyDown(KeyCode.vk_UP));
+				return SwinGame.KeyDown(KeyCode.vk_w) || SwinGame.KeyDown(KeyCode.vk_UP);
 			});
 			_up.StateSetTrue += (object sender, EventArgs e) =>
 			{
@@ -38,7 +38,7 @@ namespace SnakeGame
 			};
 			_left = new BooleanControlsFlag(delegate()
 			{
-				return _player.MovementDirection.Invert != Direction.Left && (SwinGame.KeyDown(KeyCode.vk_a) || SwinGame.KeyDown(KeyCode.vk_LEFT));
+				return SwinGame.KeyDown(KeyCode.vk_a) || SwinGame.KeyDown(KeyCode.vk_LEFT);
 			});
 			_left.StateSetTrue += (object sender, EventArgs e) =>
 			{
@@ -46,7 +46,7 @@ namespace SnakeGame
 			};
 			_down = new BooleanControlsFlag(delegate()
 			{
-				return _player.MovementDirection.Invert != Direction.Down && (SwinGame.KeyDown(KeyCode.vk_s) || SwinGame.KeyDown(KeyCode.vk_DOWN));
+				return SwinGame.KeyDown(KeyCode.vk_s) || SwinGame.KeyDown(KeyCode.vk_DOWN);
 			});
 			_down.StateSetTrue += (object sender, EventArgs e) =>
 			{
@@ -54,7 +54,7 @@ namespace SnakeGame
 			};
 			_right = new BooleanControlsFlag(delegate()
 			{
-				return _player.MovementDirection.Invert != Direction.Right && (SwinGame.KeyDown(KeyCode.vk_d) || SwinGame.KeyDown(KeyCode.vk_RIGHT));
+				return SwinGame.KeyDown(KeyCode.vk_d) || SwinGame.KeyDown(KeyCode.vk_RIGHT);
 			});
 			_right.StateSetTrue += (object sender, EventArgs e) =>
 			{

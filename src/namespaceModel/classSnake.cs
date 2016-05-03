@@ -93,7 +93,21 @@ namespace SnakeGame
 			get
 			{
 				Cell head = Head.Cell;
-				return !head.IsValid || !PlayArea.RangeX.InRange(head.X) || !PlayArea.RangeY.InRange(head.Y);
+				bool res = !head.IsValid || !PlayArea.RangeX.InRange(head.X) || !PlayArea.RangeY.InRange(head.Y);
+				if (!res)
+				{
+					IEnumerator<Cell> enumerator = OccupiedCells.GetEnumerator();
+					enumerator.MoveNext();
+					while (enumerator.MoveNext())
+					{
+						if (enumerator.Current == head)
+						{
+							res = true;
+							break;
+						}
+					}
+				}
+				return res;
 			}
 		}
 		/// <summary>

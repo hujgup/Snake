@@ -22,7 +22,7 @@ namespace SnakeGame
 			Color background = SwinGame.RGBColor(32, 32, 32);
 
 			MetaController controller = new MetaController();
-			controller.SetController(new GameplayController(Difficulty.Medium));
+			controller.SetController(new GameplayController(Difficulty.Easy));
 
 			while (!SwinGame.WindowCloseRequested())
 			{
