@@ -161,6 +161,17 @@ namespace SnakeGame.Model
 			Assert.AreEqual(s.Length, tailNodes.Count, "The number of nodes in the snake's tail should match one-to-one with the snake's length at all times (tail nodes constructor check).");
 			Assert.AreEqual(s.Length, cells.Count, "The number of nodes in the snake's tail should match one-to-one with the snake's length at all times (cells constructor check).");
 		}
+		private void CheckBounds(Grid g, Direction dir)
+		{
+			Snake s = new Snake(g, g[8, 8], 2, dir);
+			for (int i = 0; i < 8; i++)
+			{
+				s.Move();
+				Assert.IsFalse(s.OutOfBounds, "Snake.OutOfBounds must be false while the snake is in a valid cell that is not at the grid width/height or larger, depending on the axis being checked (direction movement checks).");
+			}
+			s.Move();
+			Assert.IsTrue(s.OutOfBounds, "Moving the snake outside the grid in any direction should cause Snake.OutOfBounds to be true (direction movement checks).");
+		}
 		/// <summary>
 		/// Tests snake construction.
 		/// </summary>
@@ -231,6 +242,22 @@ namespace SnakeGame.Model
 			{
 				s.Length = 1;
 			});
+		}
+		/// <summary>
+		/// Tests the OutOfBounds property.
+		/// </summary>
+		[Test()]
+		public void TestBounds()
+		{
+			Grid g = new Grid(17, 17);
+			CheckBounds(g, Direction.Up);
+			CheckBounds(g, Direction.Down);
+			CheckBounds(g, Direction.Right);
+			CheckBounds(g, Direction.Left);
+			Snake s = new Snake(g, g[0, 0], 2, Direction.Left);
+			Assert.IsFalse(s.OutOfBounds, "Snake.OutOfBounds must be false while the snake is in a valid cell that is not at the grid width/height or larger, depending on the axis being checked (start 0,0 check).");
+			s.Move();
+			Assert.IsTrue(s.OutOfBounds, "Moving the snake outside the grid in any direction should cause Snake.OutOfBounds to be true (start 0,0 check).");
 		}
 	}
 }

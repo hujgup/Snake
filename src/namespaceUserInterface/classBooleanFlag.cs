@@ -25,7 +25,7 @@ namespace SnakeGame.UserInterface
 					StateSetFalse(this, e);
 				}
 			};
-			RenderEvents.LogicTick += _boolSet;
+			StateChange += _boolSet;
 		}
 		/// <summary>
 		/// Occurs when the Set value changes to true.
@@ -37,7 +37,7 @@ namespace SnakeGame.UserInterface
 		public event EventHandler StateSetFalse;
 		public override void Dispose()
 		{
-			RenderEvents.LogicTick -= _boolSet;
+			StateChange -= _boolSet;
 		}
 	}
 }

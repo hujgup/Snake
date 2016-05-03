@@ -86,6 +86,17 @@ namespace SnakeGame
 			}
 		}
 		/// <summary>
+		/// Gets a value indicating whether this <see cref="SnakeGame.Snake"/>'s head is out of bounds.
+		/// </summary>
+		public bool OutOfBounds
+		{
+			get
+			{
+				Cell head = Head.Cell;
+				return !head.IsValid || !PlayArea.RangeX.InRange(head.X) || !PlayArea.RangeY.InRange(head.Y);
+			}
+		}
+		/// <summary>
 		/// Gets or sets the snake's tail length.
 		/// </summary>
 		public int Length

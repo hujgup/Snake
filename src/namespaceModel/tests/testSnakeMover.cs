@@ -40,6 +40,47 @@ namespace SnakeGame.Model
 			};
 			t.Start();
 		}
+		/// <summary>
+		/// Tests that the SnakeMover events are behaving properly.
+		/// </summary>
+		[Test()]
+		public void Events()
+		{
+			Grid g = new Grid(16, 16);
+			Cell c = g[8, 8];
+			Snake s = new Snake(g, c, 2, Direction.Up);
+			SnakeMover sm = new SnakeMover(s, 4);
+			sm.BeforeMove += (object sender, EventArgs e) =>
+			{
+				Assert.AreEqual(c, s.Head, "When SnakeMover.BeforeMove fires, the snake's head should be in the position it was before movement.");
+			};
+			sm.AfterMove += (object sender, EventArgs e) =>
+			{
+				Assert.AreEqual(g[7, 8], s.Head, "When SnakeMover.AfterMove fires, the snake's head should be in its new position.");
+			};
+			sm.Dispose();
+			s = new Snake(g, g[1, 0], 2, Direction.Left);
+			sm = new SnakeMover(s, 4);
+			int ticks = 0;
+			sm.BeforeMove += (object sender, EventArgs e) =>
+			{
+				if (++ticks > 2)
+				{
+					Assert.Fail("SnakeMover.OutOfBounds did not fire at the correct time (too many ticks elapsed).");
+				}
+			};
+			sm.OutOfBounds += (object sender, EventArgs e) =>
+			{
+				if (ticks < 2)
+				{
+					Assert.Fail("SnakeMover.OutOfBounds did not fire at the correct time (too early).");
+				}
+				else
+				{
+					Assert.Pass();
+				}
+			};
+		}
 	}
 }
 
