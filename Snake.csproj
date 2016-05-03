@@ -65,10 +65,16 @@
     <Compile Include="src\namespaceModel\classSnake.cs" />
     <Compile Include="src\namespaceModel\classSnakeMover.cs" />
     <Compile Include="src\namespaceModel\enumDirection.cs" />
-    <Compile Include="src\classGameController.cs" />
     <Compile Include="src\enumGameState.cs" />
     <Compile Include="src\enumDifficulty.cs" />
     <Compile Include="src\classStateController.cs" />
+    <Compile Include="src\classGameplayController.cs" />
+    <Compile Include="src\classGameController.cs" />
+    <Compile Include="src\classMetaController.cs" />
+    <Compile Include="src\classStateChangeEventArgs.cs" />
+    <Compile Include="src\classScoreInputController.cs" />
+    <Compile Include="src\namespaceUserInterface\classScoreIO.cs" />
+    <Compile Include="src\namespaceUserInterface\classXmlDocumentExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -191,6 +197,7 @@
     <Reference Include="MbUnit40">
       <HintPath>packages\mbunit.3.4.14.0\lib\net40\MbUnit40.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

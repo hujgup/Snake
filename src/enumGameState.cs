@@ -8,7 +8,9 @@ namespace SnakeGame
 		SetupMenu,
 		Gameplay,
 		ScoreInput,
-		ScoreView
+		ScoreViewEasy,
+		ScoreViewMedium,
+		ScoreViewHard
 	}
 }
 
