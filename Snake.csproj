@@ -67,6 +67,8 @@
     <Compile Include="src\namespaceModel\enumDirection.cs" />
     <Compile Include="src\classGameController.cs" />
     <Compile Include="src\enumGameState.cs" />
+    <Compile Include="src\enumDifficulty.cs" />
+    <Compile Include="src\classStateController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

@@ -6,22 +6,6 @@ using SwinGameSDK;
 
 namespace SnakeGame
 {
-/*
-	public enum GameState
-	{
-		MainMenu,
-		SettingsMenu,
-		Gameplay,
-		ScoreInput,
-		ScoreView
-	}
-*/
-	public enum Difficulty
-	{
-		Easy = 5,
-		Medium = 13,
-		Hard = 19,
-	}
 	public class GameplayController : IDisposable
 	{
 		private Grid _playArea;

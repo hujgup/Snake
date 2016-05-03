@@ -5,7 +5,7 @@ namespace SnakeGame
 	public enum GameState
 	{
 		MainMenu,
-		SettingsMenu,
+		SetupMenu,
 		Gameplay,
 		ScoreInput,
 		ScoreView
