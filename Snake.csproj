@@ -36,23 +36,13 @@
     <Compile Include="src\namespaceGridSystem\enumAxis2D.cs" />
     <Compile Include="src\namespaceGridSystem\iGridOccupier.cs" />
     <Compile Include="src\namespaceGridSystem\iGridSingletonOccupier.cs" />
-    <Compile Include="src\classSnake.cs" />
     <Compile Include="src\Main.cs">
       <DeployService-Deploy>True</DeployService-Deploy>
     </Compile>
-    <Compile Include="src\enumDirection.cs" />
-    <Compile Include="src\classMovementNode.cs" />
     <Compile Include="src\namespaceGridSystem\tests\testGrid.cs" />
     <Compile Include="src\namespaceGridSystem\classRangeRestriction.cs" />
     <Compile Include="src\namespaceGridSystem\tests\testRangeRestriction.cs" />
     <Compile Include="src\namespaceGridSystem\tests\testAxis2D.cs" />
-    <Compile Include="src\classFruit.cs" />
-    <Compile Include="src\tests\testFruit.cs" />
-    <Compile Include="src\tests\testMovementNode.cs" />
-    <Compile Include="src\tests\testSnake.cs" />
-    <Compile Include="src\classSnakeMover.cs" />
-    <Compile Include="src\tests\testSnakeMover.cs" />
-    <Compile Include="src\tests\testDirection.cs" />
     <Compile Include="src\namespaceGridSystem\classCell.cs" />
     <Compile Include="src\namespaceGridSystem\tests\testCell.cs" />
     <Compile Include="src\namespaceUserInterface\classRenderEvents.cs" />
@@ -65,14 +55,27 @@
     <Compile Include="src\namespaceUserInterface\tests\testControlsFlag.cs" />
     <Compile Include="src\namespaceUserInterface\tests\testSnakeMovementControlHandler.cs" />
     <Compile Include="src\namespaceUserInterface\classSnakeMovementControlHandler.cs" />
+    <Compile Include="src\namespaceModel\tests\testDirection.cs" />
+    <Compile Include="src\namespaceModel\tests\testFruit.cs" />
+    <Compile Include="src\namespaceModel\tests\testMovementNode.cs" />
+    <Compile Include="src\namespaceModel\tests\testSnake.cs" />
+    <Compile Include="src\namespaceModel\tests\testSnakeMover.cs" />
+    <Compile Include="src\namespaceModel\classFruit.cs" />
+    <Compile Include="src\namespaceModel\classMovementNode.cs" />
+    <Compile Include="src\namespaceModel\classSnake.cs" />
+    <Compile Include="src\namespaceModel\classSnakeMover.cs" />
+    <Compile Include="src\namespaceModel\enumDirection.cs" />
+    <Compile Include="src\classGameController.cs" />
+    <Compile Include="src\enumGameState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="src\" />
-    <Folder Include="src\tests\" />
     <Folder Include="src\namespaceGridSystem\tests\" />
     <Folder Include="src\namespaceUserInterface\" />
     <Folder Include="src\namespaceUserInterface\tests\" />
+    <Folder Include="src\namespaceModel\" />
+    <Folder Include="src\namespaceModel\tests\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\xml\highscores.xsd">

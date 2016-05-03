@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SnakeGame.Model;
 using SnakeGame.GridSystem;
 using SnakeGame.UserInterface;
 using SwinGameSDK;
@@ -18,6 +19,22 @@ namespace SnakeGame
 		/// <param name="args">The command-line arguments.</param>
 		public static void Main(string[] args)
 		{
+			SwinGame.OpenGraphicsWindow("Snake", 272, 272);
+			Color background = SwinGame.RGBColor(32, 32, 32);
+
+			GameplayController c = new GameplayController(Difficulty.Medium);
+
+			while (!SwinGame.WindowCloseRequested())
+			{
+				SwinGame.ProcessEvents();
+				RenderEvents.OnLogicTick();
+				SwinGame.ClearScreen(background);
+				RenderEvents.OnRenderTick();
+				SwinGame.RefreshScreen(60);
+			}
+
+			c.Dispose();
+/*
 			SwinGame.OpenGraphicsWindow("Snake", 272, 272);
 			Color background = SwinGame.RGBColor(32, 32, 32);
 			Grid playArea = new Grid(32, 32);
@@ -89,6 +106,7 @@ namespace SnakeGame
 				SwinGame.RefreshScreen(60);
 			}
 			mover.Dispose();
+*/
 		}
 	}
 }

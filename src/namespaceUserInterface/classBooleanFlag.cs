@@ -7,13 +7,14 @@ namespace SnakeGame.UserInterface
 	/// </summary>
 	public abstract class BooleanFlag : Flag<bool>
 	{
+		private EventHandler _boolSet;
 		/// <summary>
 		/// Initializes a new instance of the <see cref="SnakeGame.UserInterface.BooleanFlag"/> class.
 		/// </summary>
 		/// <param name="setter">The delegate that sets the value of this flag.</param>
 		public BooleanFlag(Func<bool> setter) : base(setter)
 		{
-			StateChange += (object sender, EventArgs e) =>
+			_boolSet = delegate(object sender, EventArgs e)
 			{
 				if (Value && StateSetTrue != null)
 				{
@@ -24,6 +25,7 @@ namespace SnakeGame.UserInterface
 					StateSetFalse(this, e);
 				}
 			};
+			RenderEvents.LogicTick += _boolSet;
 		}
 		/// <summary>
 		/// Occurs when the Set value changes to true.
@@ -33,6 +35,10 @@ namespace SnakeGame.UserInterface
 		/// Occurs when the Set value changes to false.
 		/// </summary>
 		public event EventHandler StateSetFalse;
+		public override void Dispose()
+		{
+			RenderEvents.LogicTick -= _boolSet;
+		}
 	}
 }
 

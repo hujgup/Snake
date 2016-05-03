@@ -26,6 +26,7 @@ namespace SnakeGame.UserInterface
 		public override void Dispose()
 		{
 			RenderEvents.LogicTick -= Handler;
+			base.Dispose();
 		}
 	}
 }

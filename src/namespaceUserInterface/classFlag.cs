@@ -5,7 +5,7 @@ namespace SnakeGame.UserInterface
 	/// <summary>
 	/// Allows the setting of a value based on the firing of an event.
 	/// </summary>
-	public abstract class Flag<T>
+	public abstract class Flag<T> : IDisposable
 	{
 		private EventHandler _handler;
 		/// <summary>

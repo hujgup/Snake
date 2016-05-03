@@ -2,7 +2,7 @@
 using SnakeGame.GridSystem;
 using NUnit.Framework;
 
-namespace SnakeGame
+namespace SnakeGame.Model
 {
 	/// <summary>
 	/// Provides unit tests for the Direction enum, and its extension methods.
