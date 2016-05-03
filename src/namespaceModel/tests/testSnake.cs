@@ -258,6 +258,15 @@ namespace SnakeGame.Model
 			Assert.IsFalse(s.OutOfBounds, "Snake.OutOfBounds must be false while the snake is in a valid cell that is not at the grid width/height or larger, depending on the axis being checked (start 0,0 check).");
 			s.Move();
 			Assert.IsTrue(s.OutOfBounds, "Moving the snake outside the grid in any direction should cause Snake.OutOfBounds to be true (start 0,0 check).");
+			s = new Snake(g, g[8, 8], 5, Direction.Right);
+			s.Move();
+			s.MovementDirection = s.MovementDirection.RotateAnticlockwise();
+			s.Move();
+			s.MovementDirection = s.MovementDirection.RotateAnticlockwise();
+			s.Move();
+			s.MovementDirection = s.MovementDirection.RotateAnticlockwise();
+			s.Move();
+			Assert.IsTrue(s.OutOfBounds, "Snake self-intersection should cause Snake.OutOfBounds to return true.");
 		}
 	}
 }
