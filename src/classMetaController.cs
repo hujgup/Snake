@@ -2,18 +2,31 @@
 
 namespace SnakeGame
 {
+	/// <summary>
+	/// Represents the game as a whole.
+	/// </summary>
 	public class MetaController : IDisposable
 	{
 		private GameController _controller;
+		/// <summary>
+		/// Initializes a new instance of the <see cref="SnakeGame.MetaController"/> class.
+		/// </summary>
 		public MetaController()
 		{
 			_controller = null;
 		}
+		/// <summary>
+		/// Gets or sets the gameplay difficulty.
+		/// </summary>
 		public Difficulty GameplayDifficulty
 		{
 			get;
 			set;
 		}
+		/// <summary>
+		/// Swaps out the current controller for another one.
+		/// </summary>
+		/// <param name="controller">The controller to swap to.</param>
 		public void SetController(GameController controller)
 		{
 			if (_controller != null)
@@ -37,6 +50,13 @@ namespace SnakeGame
 */
 			_controller = controller;
 		}
+		/// <summary>
+		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+		/// </summary>
+		/// <remarks>Call <see cref="Dispose"/> when you are finished using the <see cref="SnakeGame.MetaController"/>. The
+		/// <see cref="Dispose"/> method leaves the <see cref="SnakeGame.MetaController"/> in an unusable state. After calling
+		/// <see cref="Dispose"/>, you must release all references to the <see cref="SnakeGame.MetaController"/> so the
+		/// garbage collector can reclaim the memory that the <see cref="SnakeGame.MetaController"/> was occupying.</remarks>
 		public void Dispose()
 		{
 			try

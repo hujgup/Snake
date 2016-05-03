@@ -123,6 +123,10 @@ namespace SnakeGame.Model
 			set;
 		}
 		/// <summary>
+		/// Fires when this fruit is eaten.
+		/// </summary>
+		public event EventHandler Eaten;
+		/// <summary>
 		/// Randomizes the location of this fruit.
 		/// </summary>
 		/// <param name="exclude">The set of points that this fruit should not appear at.</param>
@@ -144,6 +148,17 @@ namespace SnakeGame.Model
 		public void RandomizeLocation()
 		{
 			_location = PlayArea.GetRandomCell();
+		}
+		/// <summary>
+		/// Causes the specified snake to eat this fruit.
+		/// </summary>
+		/// <param name="eater">The snake eating this fruit.</param>
+		public void Eat(Snake eater)
+		{
+			if (Eaten != null)
+			{
+				Eaten(this, EventArgs.Empty);
+			}
 		}
 	}
 }

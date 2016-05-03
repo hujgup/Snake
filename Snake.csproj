@@ -75,6 +75,7 @@
     <Compile Include="src\classScoreInputController.cs" />
     <Compile Include="src\namespaceUserInterface\classScoreIO.cs" />
     <Compile Include="src\namespaceUserInterface\classXmlDocumentExtensions.cs" />
+    <Compile Include="src\tests\testGameplayController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -84,6 +85,7 @@
     <Folder Include="src\namespaceUserInterface\tests\" />
     <Folder Include="src\namespaceModel\" />
     <Folder Include="src\namespaceModel\tests\" />
+    <Folder Include="src\tests\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\xml\highscores.xsd">

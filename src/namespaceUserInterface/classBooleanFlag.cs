@@ -35,6 +35,14 @@ namespace SnakeGame.UserInterface
 		/// Occurs when the Set value changes to false.
 		/// </summary>
 		public event EventHandler StateSetFalse;
+		/// <summary>
+		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+		/// </summary>
+		/// <remarks>Call <see cref="Dispose"/> when you are finished using the <see cref="SnakeGame.UserInterface.BooleanFlag"/>. The
+		/// <see cref="Dispose"/> method leaves the <see cref="SnakeGame.UserInterface.BooleanFlag"/> in an unusable state.
+		/// After calling <see cref="Dispose"/>, you must release all references to the
+		/// <see cref="SnakeGame.UserInterface.BooleanFlag"/> so the garbage collector can reclaim the memory that the
+		/// <see cref="SnakeGame.UserInterface.BooleanFlag"/> was occupying.</remarks>
 		public override void Dispose()
 		{
 			StateChange -= _boolSet;

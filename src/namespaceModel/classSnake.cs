@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using SnakeGame.Model;
 using SnakeGame.GridSystem;
 
-namespace SnakeGame
+namespace SnakeGame.Model
 {
 	/// <summary>
 	/// Represents a Snake.
@@ -86,7 +86,7 @@ namespace SnakeGame
 			}
 		}
 		/// <summary>
-		/// Gets a value indicating whether this <see cref="SnakeGame.Snake"/>'s head is out of bounds.
+		/// Gets a value indicating whether this <see cref="SnakeGame.Model.Snake"/>'s head is out of bounds.
 		/// </summary>
 		public bool OutOfBounds
 		{

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Timers;
 using System.Collections.Generic;
 using SnakeGame.GridSystem;
 using NUnit.Framework;
@@ -234,6 +235,29 @@ namespace SnakeGame.Model
 				f.RandomizeLocation(exclude);
 				Assert.IsFalse(f.OccupiedCell.IsValid, "Attempting to randomize location when all cells in a grid have been excluded should return an invalid cell.");
 			}
+		}
+		/// <summary>
+		/// Tests fruit eating.
+		/// </summary>
+		[Test()]
+		public void TestEat()
+		{
+			Grid g = new Grid(16, 16);
+			Snake s = new Snake(g, g[8, 8], 2, Direction.Up);
+			Fruit f = new Fruit(g, g[0, 0], 1);
+			Timer t = new Timer(1000);
+			f.Eaten += (object sender, EventArgs e) =>
+			{
+				t.Stop();
+				t.Dispose();
+				Assert.Pass();
+			};
+			t.Elapsed += (object sender, ElapsedEventArgs e) =>
+			{
+				Assert.Fail("Fruit.Eaten event did not fire.");
+			};
+			t.Start();
+			f.Eat(s);
 		}
 	}
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace SnakeGame.UserInterface
 {
+	// TODO
 	public class ScoreCollection
 	{
 		public ScoreCollection(List<Score> scores)
