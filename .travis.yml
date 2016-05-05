@@ -1,7 +1,6 @@
 language: csharp
-solution: Snake.sln
 install:
-	- nuget restore Snake.sln
+- nuget restore Snake.sln
 script:
-	- xbuild /p:Configuration=Releease Snake.sln
-	- mono ./packages/NUnit.Runners.Net4.2.6.4/tools/nunit-console.exe
+- xbuild /p:Configuration=Release Snake.sln
+- mono ./packages/NUnit.Runners.Net4.2.6.4/tools/nunit-console.exe
