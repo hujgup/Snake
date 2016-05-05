@@ -125,7 +125,7 @@ namespace SnakeGame.Model
 		/// <summary>
 		/// Fires when this fruit is eaten.
 		/// </summary>
-		public event EventHandler Eaten;
+		public event EventHandler<EatenEventArgs> Eaten;
 		/// <summary>
 		/// Randomizes the location of this fruit.
 		/// </summary>
@@ -157,7 +157,7 @@ namespace SnakeGame.Model
 		{
 			if (Eaten != null)
 			{
-				Eaten(this, EventArgs.Empty);
+				Eaten(this, new EatenEventArgs(eater));
 			}
 		}
 	}

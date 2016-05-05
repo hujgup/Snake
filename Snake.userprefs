@@ -1,15 +1,15 @@
 ﻿<Properties StartupItem="Snake.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\classStateChangeEventArgs.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\namespaceUserInterface\classScoreIO.cs">
     <Files>
       <File FileName="src\Main.cs" Line="1" Column="1" />
       <File FileName="src\namespaceUserInterface\classRenderEvents.cs" Line="1" Column="1" />
       <File FileName="src\classMetaController.cs" Line="1" Column="1" />
       <File FileName="src\classGameController.cs" Line="1" Column="1" />
-      <File FileName="src\classGameplayController.cs" Line="1" Column="1" />
+      <File FileName="src\classGameplayController.cs" Line="41" Column="30" />
       <File FileName="src\enumDifficulty.cs" Line="1" Column="1" />
-      <File FileName="src\classStateChangeEventArgs.cs" Line="9" Column="3" />
-      <File FileName="src\classStateController.cs" Line="1" Column="1" />
+      <File FileName="src\classStateChangeEventArgs.cs" Line="21" Column="31" />
+      <File FileName="src\classStateController.cs" Line="8" Column="10" />
       <File FileName="src\enumGameState.cs" Line="1" Column="1" />
       <File FileName="src\namespaceGridSystem\classGrid.cs" Line="1" Column="1" />
       <File FileName="src\namespaceGridSystem\classCell.cs" Line="1" Column="1" />
@@ -18,7 +18,7 @@
       <File FileName="src\namespaceGridSystem\iGridOccupier.cs" Line="1" Column="1" />
       <File FileName="src\namespaceGridSystem\iGridSingletonOccupier.cs" Line="1" Column="1" />
       <File FileName="src\namespaceModel\classSnake.cs" Line="1" Column="1" />
-      <File FileName="src\namespaceModel\classFruit.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceModel\classFruit.cs" Line="128" Column="44" />
       <File FileName="src\namespaceModel\classMovementNode.cs" Line="1" Column="1" />
       <File FileName="src\namespaceModel\classSnakeMover.cs" Line="1" Column="1" />
       <File FileName="src\namespaceModel\enumDirection.cs" Line="1" Column="1" />
@@ -27,12 +27,16 @@
       <File FileName="src\namespaceUserInterface\classFlag.cs" Line="1" Column="1" />
       <File FileName="src\namespaceUserInterface\classControlsFlag.cs" Line="1" Column="1" />
       <File FileName="src\namespaceUserInterface\classCellDrawing.cs" Line="1" Column="1" />
-      <File FileName="src\namespaceUserInterface\classScoreIO.cs" Line="1" Column="1" />
-      <File FileName="src\namespaceScoring\classScore.cs" Line="1" Column="1" />
-      <File FileName="src\namespaceScoring\classScoreCollection.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceUserInterface\classScoreIO.cs" Line="113" Column="47" />
+      <File FileName="src\namespaceScoring\classScore.cs" Line="64" Column="1" />
+      <File FileName="src\namespaceScoring\classScoreCollection.cs" Line="160" Column="1" />
       <File FileName="src\namespaceUserInterface\classSnakeMovementControlHandler.cs" Line="1" Column="1" />
       <File FileName="src\namespaceUserInterface\classXmlDocumentExtensions.cs" Line="1" Column="1" />
       <File FileName="src\classScoreInputController.cs" Line="1" Column="1" />
+      <File FileName="src\namespaceModel\classEatenEventArgs.cs" Line="21" Column="1" />
+      <File FileName="src\tests\testFruitEatenHandler.cs" Line="32" Column="23" />
+      <File FileName="src\classFruitEatenHandler.cs" Line="35" Column="5" />
+      <File FileName="src\namespaceModel\tests\testFruit.cs" Line="244" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

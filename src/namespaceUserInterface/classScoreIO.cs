@@ -7,14 +7,26 @@ using SnakeGame.Scoring;
 
 namespace SnakeGame.UserInterface
 {
+	/// <summary>
+	/// Controls the file IO for scores.
+	/// </summary>
 	public class ScoreIO
 	{
+		/// <summary>
+		/// The path to the XML file containing the scores.
+		/// </summary>
 		public const string DATA_PATH = "Resources/xml/highscores.xml";
+		/// <summary>
+		/// The path to the XML schema defining the structure of DATA_PATH.
+		/// </summary>
 		public const string SCHEMA_PATH = "Resources/xml/highscores.xsd";
 		private ValidationEventHandler _handler = delegate(object sender, ValidationEventArgs e)
 		{
 		};
 		private XmlDocument _doc;
+		/// <summary>
+		/// Initializes a new instance of the <see cref="SnakeGame.UserInterface.ScoreIO"/> class.
+		/// </summary>
 		public ScoreIO()
 		{
 			XmlReaderSettings settings = new XmlReaderSettings();
@@ -30,13 +42,13 @@ namespace SnakeGame.UserInterface
 			LoadScores(scores,Difficulty.Hard);
 			Collection = new ScoreCollection(scores);
 		}
-		public void LoadScores(List<Score> scores, Difficulty d)
+		/// <summary>
+		/// Gets the set of scores being considered by this instance.
+		/// </summary>
+		public ScoreCollection Collection
 		{
-			XmlNodeList dScores = _doc.GetFirstElementWithTagName(GetTagName(Difficulty.Easy)).GetElementsByTagName("score");
-			foreach (XmlNode node in dScores)
-			{
-				scores.Add(new Score(d, ((XmlElement)node).GetAttribute("player"), Convert.ToInt32(node.InnerText)));
-			}
+			get;
+			private set;
 		}
 		private Difficulty GetDifficulty(string tagName)
 		{
@@ -57,6 +69,14 @@ namespace SnakeGame.UserInterface
 			}
 			return res;
 		}
+		private void LoadScores(List<Score> scores, Difficulty d)
+		{
+			XmlNodeList dScores = _doc.GetFirstElementWithTagName(GetTagName(Difficulty.Easy)).GetElementsByTagName("score");
+			foreach (XmlNode node in dScores)
+			{
+				scores.Add(new Score(d, ((XmlElement)node).GetAttribute("player"), Convert.ToInt32(node.InnerText)));
+			}
+		}
 		private string GetTagName(Difficulty d)
 		{
 			string res = null;
@@ -76,11 +96,10 @@ namespace SnakeGame.UserInterface
 			}
 			return res;
 		}
-		public ScoreCollection Collection
-		{
-			get;
-			private set;
-		}
+		/// <summary>
+		/// Adds a score to both the collection and the XML document structure.
+		/// </summary>
+		/// <param name="score">Score.</param>
 		public void AddScore(Score score)
 		{
 			Collection.Add(score);
@@ -90,6 +109,9 @@ namespace SnakeGame.UserInterface
 			entry.InnerText = score.Value.ToString();
 			difficultyNode.AppendChild(entry);
 		}
+		/// <summary>
+		/// Writes the XML document to the XML file.
+		/// </summary>
 		public void Write()
 		{
 			XmlWriterSettings settings = new XmlWriterSettings();

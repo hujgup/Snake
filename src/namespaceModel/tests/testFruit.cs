@@ -246,10 +246,11 @@ namespace SnakeGame.Model
 			Snake s = new Snake(g, g[8, 8], 2, Direction.Up);
 			Fruit f = new Fruit(g, g[0, 0], 1);
 			Timer t = new Timer(1000);
-			f.Eaten += (object sender, EventArgs e) =>
+			f.Eaten += (object sender, EatenEventArgs e) =>
 			{
 				t.Stop();
 				t.Dispose();
+				Assert.AreEqual(s, e.Eater, "The argument passed to EatenEventArgs must be the snake that ate the fruit.");
 				Assert.Pass();
 			};
 			t.Elapsed += (object sender, ElapsedEventArgs e) =>

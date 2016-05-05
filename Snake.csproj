@@ -75,9 +75,11 @@
     <Compile Include="src\classScoreInputController.cs" />
     <Compile Include="src\namespaceUserInterface\classScoreIO.cs" />
     <Compile Include="src\namespaceUserInterface\classXmlDocumentExtensions.cs" />
-    <Compile Include="src\tests\testGameplayController.cs" />
     <Compile Include="src\namespaceScoring\classScore.cs" />
     <Compile Include="src\namespaceScoring\classScoreCollection.cs" />
+    <Compile Include="src\namespaceModel\classEatenEventArgs.cs" />
+    <Compile Include="src\classFruitEatenHandler.cs" />
+    <Compile Include="src\tests\testFruitEatenHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

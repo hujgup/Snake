@@ -14,6 +14,7 @@ namespace SnakeGame
 		private Grid _playArea;
 		private Snake _player;
 		private Fruit _objective;
+		private FruitEatenHandler _handler;
 		private SnakeMovementControlHandler _mover;
 		private BooleanControlsFlag _up;
 		private BooleanControlsFlag _down;
@@ -29,10 +30,7 @@ namespace SnakeGame
 			_playArea = new Grid(32, 32);
 			_player = new Snake(_playArea, _playArea[16, 16], 5, Direction.Right);
 			_objective = new Fruit(_playArea, _player.OccupiedCells, 3);
-			_objective.Eaten += (object sender, EventArgs e) =>
-			{
-				_objective.RandomizeLocation(_player.OccupiedCells);
-			};
+			_handler = new FruitEatenHandler(_objective, _player);
 			_mover = new SnakeMovementControlHandler(_player, (int)difficulty);
 			_mover.OutOfBounds += (object sender, EventArgs e) =>
 			{
@@ -40,10 +38,7 @@ namespace SnakeGame
 			};
 			_mover.AfterMove += (object sender, EventArgs e) =>
 			{
-				if (_player.Head.Cell == _objective.OccupiedCell)
-				{
-					_objective.Eat(_player);
-				}
+				_handler.EvaluateState();
 			};
 
 			_up = new BooleanControlsFlag(delegate()
