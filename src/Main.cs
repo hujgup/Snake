@@ -22,7 +22,7 @@ namespace SnakeGame
 			Color background = SwinGame.RGBColor(32, 32, 32);
 
 			MetaController controller = new MetaController();
-			controller.SetController(new GameplayController(Difficulty.Easy));
+			controller.SetController(new SetupMenuController());
 
 			while (!SwinGame.WindowCloseRequested())
 			{
@@ -32,8 +32,6 @@ namespace SnakeGame
 				RenderEvents.OnRenderTick();
 				SwinGame.RefreshScreen(60);
 			}
-
-			controller.Dispose();
 		}
 	}
 }

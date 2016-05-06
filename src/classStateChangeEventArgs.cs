@@ -10,15 +10,15 @@ namespace SnakeGame
 		/// <summary>
 		/// Initializes a new instance of the <see cref="SnakeGame.StateChangeEventArgs"/> class.
 		/// </summary>
-		/// <param name="state">The state being changed to.</param>
-		public StateChangeEventArgs(GameState state) : base()
+		/// <param name="switchTo">The GameController to switch to.</param>
+		public StateChangeEventArgs(GameController switchTo) : base()
 		{
-			TargetState = state;
+			Target = switchTo;
 		}
 		/// <summary>
-		/// Gets the state being changed to.
+		/// Gets the target GameController.
 		/// </summary>
-		public GameState TargetState
+		public GameController Target
 		{
 			get;
 			private set;

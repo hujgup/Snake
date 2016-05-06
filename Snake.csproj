@@ -67,7 +67,6 @@
     <Compile Include="src\namespaceModel\enumDirection.cs" />
     <Compile Include="src\enumGameState.cs" />
     <Compile Include="src\enumDifficulty.cs" />
-    <Compile Include="src\classStateController.cs" />
     <Compile Include="src\classGameplayController.cs" />
     <Compile Include="src\classGameController.cs" />
     <Compile Include="src\classMetaController.cs" />
@@ -80,6 +79,9 @@
     <Compile Include="src\namespaceModel\classEatenEventArgs.cs" />
     <Compile Include="src\classFruitEatenHandler.cs" />
     <Compile Include="src\tests\testFruitEatenHandler.cs" />
+    <Compile Include="src\classSetupMenuController.cs" />
+    <Compile Include="src\namespaceUserInterface\tests\testCellDrawing.cs" />
+    <Compile Include="src\tests\testDifficulty.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

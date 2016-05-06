@@ -34,7 +34,7 @@ namespace SnakeGame
 			_mover = new SnakeMovementControlHandler(_player, (int)difficulty);
 			_mover.OutOfBounds += (object sender, EventArgs e) =>
 			{
-				OnDone(GameState.ScoreInput);
+				//OnDone(GameState.ScoreInput);
 			};
 			_mover.AfterMove += (object sender, EventArgs e) =>
 			{

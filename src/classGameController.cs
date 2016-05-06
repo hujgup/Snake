@@ -10,13 +10,14 @@ namespace SnakeGame
 		/// <summary>
 		/// Raises the done event.
 		/// </summary>
-		/// <param name="targetState">The state that should be swapped to.</param>
-		protected void OnDone(GameState targetState)
+		/// <param name="switchTo">The GameController that should be swapped to.</param>
+		protected void OnDone(GameController switchTo)
 		{
 			if (Done != null)
 			{
-				Done(this,new StateChangeEventArgs(targetState));
+				Done(this,new StateChangeEventArgs(switchTo));
 			}
+			Dispose();
 		}
 		/// <summary>
 		/// Occurs when the game state changes away from that which is provided by this controller.
