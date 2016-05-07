@@ -260,6 +260,27 @@ namespace SnakeGame.Model
 			t.Start();
 			f.Eat(s);
 		}
+        /// <summary>
+        /// Tests snake length when fruit eaten.
+        /// </summary>
+        [Test()]
+        public void TestSnakeLengthWhenEaten()
+        {
+            Grid g = new Grid(16, 16);
+            Snake s = new Snake(g, g[8, 8], 2, Direction.Up);
+            Fruit f = new Fruit(g, g[0, 0], 1);
+
+            f.Eaten += (object sender, EatenEventArgs e) =>
+            {
+                Console.WriteLine("1");
+                Assert.AreEqual(3, s.Length, "Snakes length should increase by one as it consumes a fruit");
+            };
+
+
+            Console.WriteLine("2");
+            f.Eat(s);
+
+        }
 	}
 }
 
