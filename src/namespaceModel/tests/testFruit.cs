@@ -272,12 +272,9 @@ namespace SnakeGame.Model
 
             f.Eaten += (object sender, EatenEventArgs e) =>
             {
-                Console.WriteLine("1");
+                
                 Assert.AreEqual(3, s.Length, "Snakes length should increase by one as it consumes a fruit");
             };
-
-
-            Console.WriteLine("2");
             f.Eat(s);
 
         }
