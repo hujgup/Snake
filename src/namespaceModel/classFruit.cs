@@ -157,6 +157,7 @@ namespace SnakeGame.Model
 		{
 			if (Eaten != null)
 			{
+                eater.Length = eater.Length + 1;
 				Eaten(this, new EatenEventArgs(eater));
 			}
 		}
