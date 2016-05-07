@@ -2,7 +2,9 @@
 using SnakeGame.Model;
 using SnakeGame.GridSystem;
 using SnakeGame.UserInterface;
+using SnakeGame.Scoring;
 using SwinGameSDK;
+
 
 namespace SnakeGame
 {
@@ -14,6 +16,7 @@ namespace SnakeGame
 		private Grid _playArea;
 		private Snake _player;
 		private Fruit _objective;
+        private Score _score;
 		private FruitEatenHandler _handler;
 		private SnakeMovementControlHandler _mover;
 		private BooleanControlsFlag _up;
@@ -27,10 +30,11 @@ namespace SnakeGame
 		/// <param name="difficulty">The difficulty level to play at.</param>
 		public GameplayController(Difficulty difficulty)
 		{
+            _score = new Score(difficulty);            
 			_playArea = new Grid(32, 32);
 			_player = new Snake(_playArea, _playArea[16, 16], 5, Direction.Right);
 			_objective = new Fruit(_playArea, _player.OccupiedCells, 3);
-			_handler = new FruitEatenHandler(_objective, _player);
+            _handler = new FruitEatenHandler(_objective, _player,_score);
 			_mover = new SnakeMovementControlHandler(_player, (int)difficulty);
 			_mover.OutOfBounds += (object sender, EventArgs e) =>
 			{

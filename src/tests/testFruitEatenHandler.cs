@@ -4,6 +4,7 @@ using SnakeGame.Model;
 using SnakeGame.GridSystem;
 using NUnit.Framework;
 using Mirror = MbUnit.Framework.Mirror;
+using SnakeGame.Scoring;
 
 namespace SnakeGame
 {
@@ -22,12 +23,13 @@ namespace SnakeGame
 			Grid g = new Grid(16, 16);
 			for (int i = 0; i < 1024; i++)
 			{
+                Score sv = new Score(Difficulty.Easy);
 				Snake s = new Snake(g, g[8, 8], 2, Direction.Right);
 				Fruit f = new Fruit(g, 1);
 				s.MovementDirection = Direction.Right;
 				Cell c = g[s.Head.Cell.X + 1, s.Head.Cell.Y];
 				f.OccupiedCell = c;
-				FruitEatenHandler h = new FruitEatenHandler(f, s);
+				FruitEatenHandler h = new FruitEatenHandler(f, s,sv);
 				s.Move();
 				h.EvaluateState();
 				Assert.AreNotEqual(c, f.OccupiedCell, "After being eaten, a fruit's location must change.");
