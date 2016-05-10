@@ -82,6 +82,7 @@
     <Compile Include="src\classSetupMenuController.cs" />
     <Compile Include="src\namespaceUserInterface\tests\testCellDrawing.cs" />
     <Compile Include="src\tests\testDifficulty.cs" />
+    <Compile Include="src\namespaceScoring\tests\testScore.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -93,6 +94,7 @@
     <Folder Include="src\namespaceModel\tests\" />
     <Folder Include="src\tests\" />
     <Folder Include="src\namespaceScoring\" />
+    <Folder Include="src\namespaceScoring\tests\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\xml\highscores.xsd">
