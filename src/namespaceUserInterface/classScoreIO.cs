@@ -116,15 +116,13 @@ namespace SnakeGame.UserInterface
 		/// </summary>
 		public void Write()
 		{
-			XmlWriterSettings settings = new XmlWriterSettings();
-			settings.Async = false;
-			settings.CloseOutput = true;
-			settings.Indent = true;
-			settings.IndentChars = "\t";
-			settings.NewLineChars = "\r\n";
-			settings.NewLineOnAttributes = false;
-			settings.WriteEndDocumentOnClose = true;
-			_doc.WriteTo(XmlWriter.Create(DATA_PATH, settings));
+			using (FileStream stream = new FileStream(DATA_PATH, FileMode.Truncate))
+			{
+				using (StreamWriter writer = new StreamWriter(stream))
+				{
+					writer.Write(_doc.InnerXml);
+				}
+			}
 		}
 	}
 }

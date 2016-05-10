@@ -7,8 +7,6 @@ namespace SnakeGame
 {
 	public class ScoreInputController : GameController
 	{
-		private BooleanControlsFlag _up;
-		private BooleanControlsFlag _down;
 		private BooleanControlsFlag _select;
 		private EventHandler _renderer;
 		private Score _score;
