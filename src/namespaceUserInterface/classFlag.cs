@@ -7,7 +7,6 @@ namespace SnakeGame.UserInterface
 	/// </summary>
 	public abstract class Flag<T> : IDisposable
 	{
-		private EventHandler _handler;
 		/// <summary>
 		/// Initializes a new instance of the <see cref="SnakeGame.UserInterface.Flag{T}"/> class.
 		/// </summary>
@@ -15,7 +14,7 @@ namespace SnakeGame.UserInterface
 		public Flag(Func<T> setter)
 		{
 			Value = default(T);
-			_handler = delegate(object sender, EventArgs e)
+			Handler = delegate(object sender, EventArgs e)
 			{
 				T previous = Value;
 				Value = setter.Invoke();
@@ -33,10 +32,8 @@ namespace SnakeGame.UserInterface
 		/// </summary>
 		protected EventHandler Handler
 		{
-			get
-			{
-				return _handler;
-			}
+			get;
+			private set;
 		}
 		/// <summary>
 		/// Gets the value set by this Flag's delegate.

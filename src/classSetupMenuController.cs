@@ -55,7 +55,7 @@ namespace SnakeGame
 			};
 			_select = new BooleanControlsFlag(delegate()
 			{
-				return SwinGame.KeyTyped(KeyCode.vk_SPACE) || SwinGame.KeyTyped(KeyCode.vk_RETURN);
+				return SwinGame.KeyTyped(KeyCode.vk_RETURN);
 			});
 			_select.StateSetTrue += (object sender, EventArgs e) =>
 			{

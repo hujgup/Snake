@@ -38,7 +38,23 @@ namespace SnakeGame
 			_mover = new SnakeMovementControlHandler(_player, (int)difficulty);
 			_mover.OutOfBounds += (object sender, EventArgs e) =>
 			{
-				//OnDone(GameState.ScoreInput);
+				string finalScore = "Final score: " + _score.Value;
+				Color textColor = CellDrawing.GetColor("#e00707");
+				EventHandler gameOverText = delegate(object sender2, EventArgs e2)
+				{
+					SwinGame.DrawText("GAME OVER", textColor, 96, 128);
+					SwinGame.DrawText(finalScore, textColor, 96, 140);
+				};
+				var gameOverTimeout = new System.Timers.Timer(2048);
+				gameOverTimeout.Elapsed += (object sender2, System.Timers.ElapsedEventArgs e2) =>
+				{
+					gameOverTimeout.Stop();
+					gameOverTimeout.Dispose();
+					RenderEvents.RenderTick -= gameOverText;
+					OnDone(new ScoreInputController(_score));
+				};
+				gameOverTimeout.Start();
+				RenderEvents.RenderTick += gameOverText;
 			};
 			_mover.AfterMove += (object sender, EventArgs e) =>
 			{
@@ -78,6 +94,7 @@ namespace SnakeGame
 				_mover.Enqueue(Direction.Right);
 			};
 
+			Color scoreColor = CellDrawing.GetColor("#008282");
 			_renderer = delegate(object sender, EventArgs e)
 			{
 				int offset = 1;
@@ -98,6 +115,7 @@ namespace SnakeGame
 					CellDrawing.Draw(offset, offset, node.Cell);
 				}
 				CellDrawing.Draw(offset, offset, _objective.OccupiedCell);
+				SwinGame.DrawText("Score: " + _score.Value, scoreColor, 12, 2);
 			};
 			RenderEvents.RenderTick += _renderer;
 		}

@@ -83,6 +83,7 @@
     <Compile Include="src\namespaceUserInterface\tests\testCellDrawing.cs" />
     <Compile Include="src\tests\testDifficulty.cs" />
     <Compile Include="src\namespaceScoring\tests\testScore.cs" />
+    <Compile Include="src\namespaceUserInterface\classKeyboard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -185,6 +186,9 @@
     </None>
     <None Include="lib\sdl13\libSGSDK.dylib">
       <Link>libSGSDK.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\xml\highscores.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

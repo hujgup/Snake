@@ -15,7 +15,7 @@ namespace SnakeGame.UserInterface
 		/// The color of a cell.
 		/// </summary>
 		public static readonly Color COLOR = SwinGame.RGBColor(196, 196, 196);
-		private const int _CELL_SIZE = 8;
+		public const int CELL_SIZE = 12;
 		private static byte HexCharLookup(char digit)
 		{
 			// For some reason .NET doesn't have this built-in, unless you cast to an Int32 first
@@ -100,7 +100,7 @@ namespace SnakeGame.UserInterface
 		/// <param name="c">The cell to draw.</param>
 		public static void Draw(int xOffset, int yOffset, Cell c)
 		{
-			SwinGame.FillRectangle(COLOR, _CELL_SIZE*(xOffset + c.X), _CELL_SIZE*(yOffset + c.Y), _CELL_SIZE, _CELL_SIZE);
+			SwinGame.FillRectangle(COLOR, CELL_SIZE*(xOffset + c.X), CELL_SIZE*(yOffset + c.Y), CELL_SIZE, CELL_SIZE);
 		}
 		/// <summary>
 		/// Generates a SwinGame Color based on the given color code.

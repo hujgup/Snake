@@ -1,7 +1,12 @@
 <?xml version="1.0" ?>
+
 <highscores>
-	<easy></easy>
+	
+<easy></easy>
+
 	<medium></medium>
-	<hard></hard>
+	
+<hard></hard>
+
 </highscores>
 

@@ -18,7 +18,8 @@ namespace SnakeGame
 		/// <param name="args">The command-line arguments.</param>
 		public static void Main(string[] args)
 		{
-			SwinGame.OpenGraphicsWindow("Snake", 272, 272);
+			int size = CellDrawing.CELL_SIZE*34;
+			SwinGame.OpenGraphicsWindow("Snake", size, size);
 			Color background = SwinGame.RGBColor(32, 32, 32);
 
 			MetaController controller = new MetaController();

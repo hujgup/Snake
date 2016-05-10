@@ -41,6 +41,8 @@ namespace SnakeGame.UserInterface
 			LoadScores(scores,Difficulty.Medium);
 			LoadScores(scores,Difficulty.Hard);
 			Collection = new ScoreCollection(scores);
+			reader.Close();
+			reader.Dispose();
 		}
 		/// <summary>
 		/// Gets the set of scores being considered by this instance.
@@ -115,7 +117,7 @@ namespace SnakeGame.UserInterface
 		public void Write()
 		{
 			XmlWriterSettings settings = new XmlWriterSettings();
-			settings.Async = true;
+			settings.Async = false;
 			settings.CloseOutput = true;
 			settings.Indent = true;
 			settings.IndentChars = "\t";
